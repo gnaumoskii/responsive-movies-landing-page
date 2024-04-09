@@ -1,0 +1,6 @@
+@import url("./variables.css");
+
+body {
+    background-color: var(--dark);
+    font-family: "Montserrat", sans-serif;
+}
