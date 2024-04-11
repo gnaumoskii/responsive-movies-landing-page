@@ -1,3 +1,5 @@
+@import url("./movie-details.css");
+
 .movies-list__item {
     height: 320px;
 }
@@ -10,7 +12,7 @@
     overflow: hidden;
     background-color: var(--dark2);
     position: relative;
-
+    transition: 0.2s ease-out;
 }
 
 .movie-card__details {
@@ -83,8 +85,9 @@
 }
 
 .movie-card:hover {
-    user-select: none;
+    /* user-select: none; */
     cursor: pointer;
+    box-shadow: 0 0 16px 4px black;
 }
 
 .movie-card:hover .movie-card__details {
