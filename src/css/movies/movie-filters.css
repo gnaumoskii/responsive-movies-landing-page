@@ -1,0 +1,37 @@
+
+.movies-options__filters-form {
+    /* display: none; */
+    margin: 24px 0;
+}
+
+.filters-form__genres__heading {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.filters-form__genres__input-group__input--checkbox {
+    display: none;
+}
+
+.filters-form__genres__input-group__label {
+    color: white;
+    border: 1px solid var(--gray-dark);
+    padding: 4px 8px;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+}
+
+.filters-form__genres__input-group__input--checkbox:checked + .filters-form__genres__input-group__label{
+    border: 1px solid var(--gray-light);
+    color: black;
+    font-weight: bold;
+    padding: 4px 8px;
+    background-color: var(--gray-light);
+}
+
+.movies-options__filters-form__btn-submit {
+    margin-top: 16px;
+}

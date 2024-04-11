@@ -3,12 +3,20 @@ import moviesData from "../data/movies.json";
 import { openEditMovieModal, openAddMovieModal } from "./movie-form";
 import { closeModal, createModal } from "./utility/modal";
 
-// Movies state
+// Global Movies State
 export let { movies } = moviesData;
+let filteredMovies = movies;
+export const appliedFilters = {
+    genres: [],
+};
 
 export const renderMoviesComponent = () => {
-    $(".movies-options__btn-add").on("click", openAddMovieModal);
-    renderMoviesList(movies);
+    $(".movies-options__filters-form").hide();
+    $(".movies-options__filters-form").on("submit", filterApplyHandler);
+    $(".movies-options__buttons__btn-add").on("click", openAddMovieModal);
+    $(".movies-options__buttons__btn-filter").on("click", toggleFilterOptions);
+    $(".movies-options__filters-form__btn-submit").on("click", filterApplyHandler);
+    renderMoviesList(filteredMovies);
 };
 
 const renderMoviesList = (movies) => {
@@ -82,10 +90,47 @@ const createMovieDetailsElement = (movie) => {
 const deleteMovie = (id) => {
     movies = movies.filter((movie) => movie.id !== id);
     // Re-rendering the movie list after removing the movie.
-    renderMoviesComponent(movies);
+    renderMoviesList(movies);
     closeModal();
 };
 
 const editMovie = (movie) => {
     openEditMovieModal(movie);
+};
+
+const toggleFilterOptions = () => {
+    $(".movies-options__filters-form").toggle();
+    if ($(".movies-options__filters-form").is(":visible")) {
+        $(".movies-options__buttons__btn-filter").addClass("expanded");
+    } else {
+        $(".movies-options__buttons__btn-filter").removeClass("expanded");
+    }
+};
+
+const filterApplyHandler = (event) => {
+    event.preventDefault();
+
+    const form = $(".movies-options__filters-form")[0];
+
+    const genres = $(form).find(".filters-form__genres__input-group__input--checkbox");
+    const selectedGenres = [];
+    for (const genre of genres) {
+        if (genre.checked) {
+            selectedGenres.push(genre.dataset.filterValue);
+        }
+    }
+
+    appliedFilters.genres = [...selectedGenres];
+    console.log(appliedFilters.genres);
+    filteredMovies = movies.filter((movie) => {
+        let containsGenre = true;
+        for (let appliedGenre of appliedFilters.genres) {
+            if (!movie.genre.includes(appliedGenre)) {
+                containsGenre = false;
+            }
+        }
+        return containsGenre;
+    });
+
+    renderMoviesList(filteredMovies);
 };

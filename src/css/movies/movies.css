@@ -1,11 +1,29 @@
 @import url("./movie-details.css");
 
 .movies-options {
-    margin-left: 16px;
+    padding-left: 16px;
+    border-bottom: 1px solid var(--gray-dark);
 }
 
-.movies-options__btn-filter {
+.movies-options__buttons {
+    display: flex;
+    margin-bottom: 14px;
+}
+
+.movies-options__buttons__btn-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
     margin-left: 12px;
+}
+
+.movies-options__buttons__btn-filter.expanded {
+    background-color: var(--gray-dark);
+}
+
+.movies-options__buttons__btn-filter.expanded svg{
+    transform: rotateZ(90deg);
 }
 
 .movies-list__item {
