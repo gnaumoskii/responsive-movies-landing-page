@@ -1,6 +1,8 @@
 @import url("./variables.css");
+@import url("./buttons.css");
 
 body {
     background-color: var(--dark);
     font-family: "Montserrat", sans-serif;
 }
+

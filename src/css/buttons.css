@@ -1,0 +1,76 @@
+.btn-primary,
+.btn-primary--gray {
+    outline: none;
+    color: white;
+    padding: 6px 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 16px;
+    position: relative;
+    border: 2px solid transparent;
+    transition: background-color 0.2s ease-out;
+}
+
+.btn-primary {
+    background-color: var(--green-light);
+}
+
+.btn-primary--gray {
+    background-color: var(--gray-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--green-medium);
+}
+
+.btn-primary--gray:hover {
+    background-color: var(--gray-medium);
+}
+
+.btn-secondary,
+.btn-secondary--danger {
+    outline: none;
+    color: white;
+    padding: 6px 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 16px;
+    position: relative;
+    background-color: transparent;
+    z-index: 0;
+}
+
+.btn-secondary {
+    border: 2px solid var(--gray-dark);
+}
+
+.btn-secondary--danger {
+    border: 2px solid var(--red-light);
+}
+
+.btn-secondary::before,
+.btn-secondary--danger::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 100%;
+    overflow: hidden;
+    transition: width 0.2s ease-out;
+    z-index: -1;
+}
+
+.btn-secondary::before {
+    background-color: var(--gray-dark);
+}
+
+.btn-secondary--danger::before {
+    background-color: var(--red-light);
+}
+
+.btn-secondary:hover::before,
+.btn-secondary--danger:hover::before {
+    width: 100%;
+    left: 0;
+}

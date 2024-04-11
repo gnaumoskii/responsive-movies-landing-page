@@ -52,8 +52,8 @@ const createMovieDetailsElement = (movie) => {
             </div>
             <div class="movie-details__content__info">
                 <div class="movie-details__content__info__buttons">
-                    <button class="buttons__btn-edit">Edit</button>
-                    <button class="buttons__btn-delete">Delete</button>
+                    <button class="buttons__btn-edit btn-primary--gray">Edit</button>
+                    <button class="buttons__btn-delete btn-secondary--danger">Delete</button>
                 </div>
                 <h1 class="movie-details__content__info__title">${movie.title}</h1>
                 <p class="movie-details__content__info__description">${movie.description}</p>
