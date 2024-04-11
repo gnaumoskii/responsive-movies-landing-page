@@ -23,7 +23,7 @@
 }
 .custom-modal__content {
     position: relative;
-    max-height: 80vh;
+    max-height: 85vh;
     overflow-y: auto;
     background-color: var(--dark-lighter);
     border-radius: 16px;

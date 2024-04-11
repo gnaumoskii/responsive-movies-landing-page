@@ -1,9 +1,10 @@
 import "../css/movies/movies.css";
 import moviesData from "../data/movies.json";
+import { getEditFormElement, openEditFormModal } from "./movie-form";
 import { closeModal, createModal } from "./utility/modal";
 
 // Movies state
-let movies = moviesData.movies;
+export let { movies } = moviesData;
 
 export const renderMoviesComponent = () => {
     renderMoviesList(movies);
@@ -34,7 +35,7 @@ const createMovieCard = (movie) => {
     );
 };
 
-const openMovieDetailsModal = (movie) => {
+export const openMovieDetailsModal = (movie) => {
     const movieDetailsElement = createMovieDetailsElement(movie);
     const modal = createModal(movieDetailsElement);
     $(".movies-page").append(modal);
@@ -43,39 +44,35 @@ const openMovieDetailsModal = (movie) => {
 
 
 const createMovieDetailsElement = (movie) => {
-    const movieDetails = $(`<div class="movie-details container"></div>`);
-    const movieDetailsContent = $(`
+    const movieDetails = $(`
+    <div class="movie-details container">
         <div class="movie-details__content">
             <div class="movie-details__content__poster-container">
                 <img src="${movie.poster || "#"}" alt="${movie.title}" class="movie-details__content__poster">
             </div>
-        </div>`
-    );
-    const movieDetailsInfo = $(`
-        <div class="movie-details__content__info">
-            <h1 class="movie-details__content__info__title">${movie.title}</h1>
-            <p class="movie-details__content__info__description">${movie.description}</p>
-            <div>
-                <p class="movie-details__content__info__label">Release Year</p>
-                <p class="movie-details__content__info__year">${movie.year}</p>
+            <div class="movie-details__content__info">
+                <div class="movie-details__content__info__buttons">
+                    <button class="buttons__btn-edit">Edit</button>
+                    <button class="buttons__btn-delete">Delete</button>
+                </div>
+                <h1 class="movie-details__content__info__title">${movie.title}</h1>
+                <p class="movie-details__content__info__description">${movie.description}</p>
+                <div>
+                    <p class="movie-details__content__info__label">Release Year</p>
+                    <p class="movie-details__content__info__year">${movie.year}</p>
+                </div>
+                <div>
+                    <p class="movie-details__content__info__label">Genre</p>
+                    <p class="movie-details__content__info__genre">${movie.genre.join(", ").toLowerCase()}</p>
+                </div>
             </div>
-            <div>
-                <p class="movie-details__content__info__label">Genre</p>
-                <p class="movie-details__content__info__genre">${movie.genre.join(", ").toLowerCase()}</p>
-            </div>
-        </div>`
-    );
+        </div>
+    </div>`);
 
-    const buttons = $(`<div class=""></div>`);
-    const buttonEdit = $("<button>Edit</button>");
-    const buttonDelete = $(`<button>Delete</button>`);
+    const buttonEdit = movieDetails.find(".buttons__btn-edit");
+    const buttonDelete = movieDetails.find(".buttons__btn-delete");
     buttonDelete.on("click", () => deleteMovie(movie.id));
-    buttonEdit.on("click", () => editMovie(movie.id));
-
-    buttons.append(buttonEdit, buttonDelete);
-    movieDetailsInfo.prepend(buttons);
-    movieDetailsContent.append(movieDetailsInfo);
-    movieDetails.append(movieDetailsContent);
+    buttonEdit.on("click", () => editMovie(movie));
 
     return movieDetails;
 };
@@ -87,6 +84,6 @@ const deleteMovie = (id) => {
     closeModal();
 };
 
-const editMovie = (id) => {
-
+const editMovie = (movie) => {
+    openEditFormModal(movie);
 };
