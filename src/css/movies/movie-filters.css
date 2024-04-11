@@ -1,11 +1,20 @@
 
 .movies-options__filters-form {
-    /* display: none; */
-    margin: 24px 0;
+    padding: 0;
+    opacity: 0;
+    height: 100%;
+    max-height: 0;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out, margin 0.5s ease-out;
+    overflow: hidden;
+}
+
+.movies-options__filters-form.expanded {
+    opacity: 1;
+    margin-bottom: 16px;
 }
 
 .filters-form__genres__heading {
-    color: white;
+    color: var(--gray-light);
     font-size: 16px;
     font-weight: bold;
 }
@@ -15,20 +24,28 @@
     display: none;
 }
 
+.filters-form__genres__input-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
 .filters-form__genres__input-group__label {
     color: white;
-    border: 1px solid var(--gray-dark);
+    border: 2px solid var(--gray-dark);
     padding: 4px 8px;
     user-select: none;
     cursor: pointer;
     transition: 0.2s ease-out;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
 .filters-form__genres__input-group__input--checkbox:checked + .filters-form__genres__input-group__label{
-    border: 1px solid var(--gray-light);
     color: black;
     font-weight: bold;
     padding: 4px 8px;
+    border: 2px solid var(--gray-light);
     background-color: var(--gray-light);
 }
 

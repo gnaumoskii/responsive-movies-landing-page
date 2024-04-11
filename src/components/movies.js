@@ -5,17 +5,20 @@ import { closeModal, createModal } from "./utility/modal";
 
 // Global Movies State
 export let { movies } = moviesData;
-let filteredMovies = movies;
 export const appliedFilters = {
     genres: [],
 };
+$(document).ready(() => {
+    $(".movies-options__filters-form").on("submit", applyFiltersHandler);
+    $(".movies-options__buttons__btn-add").on("click", openAddMovieModal);
+    $(".movies-options__buttons__btn-filter").on("click", () => {
+        console.log("expand filters");
+        toggleExpandFilterOptions();
+    });
+});
 
 export const renderMoviesComponent = () => {
-    $(".movies-options__filters-form").hide();
-    $(".movies-options__filters-form").on("submit", filterApplyHandler);
-    $(".movies-options__buttons__btn-add").on("click", openAddMovieModal);
-    $(".movies-options__buttons__btn-filter").on("click", toggleFilterOptions);
-    $(".movies-options__filters-form__btn-submit").on("click", filterApplyHandler);
+    const filteredMovies = filterMovies();
     renderMoviesList(filteredMovies);
 };
 
@@ -98,16 +101,22 @@ const editMovie = (movie) => {
     openEditMovieModal(movie);
 };
 
-const toggleFilterOptions = () => {
-    $(".movies-options__filters-form").toggle();
-    if ($(".movies-options__filters-form").is(":visible")) {
-        $(".movies-options__buttons__btn-filter").addClass("expanded");
-    } else {
+const toggleExpandFilterOptions = () => {
+    if($(".movies-options").hasClass("expanded")) {
+        $('.movies-options__filters-form').css("max-height", '0px');
         $(".movies-options__buttons__btn-filter").removeClass("expanded");
+        $(".movies-options").removeClass("expanded");
+        $(".movies-options__filters-form").removeClass("expanded");
+    } else {
+        $(".movies-options__buttons__btn-filter").addClass("expanded");
+        $('.movies-options__filters-form').css("max-height", $('.movies-options__filters-form')[0].scrollHeight);
+        $(".movies-options").addClass("expanded");
+        $(".movies-options__filters-form").addClass("expanded");
     }
+
 };
 
-const filterApplyHandler = (event) => {
+const applyFiltersHandler = (event) => {
     event.preventDefault();
 
     const form = $(".movies-options__filters-form")[0];
@@ -119,10 +128,13 @@ const filterApplyHandler = (event) => {
             selectedGenres.push(genre.dataset.filterValue);
         }
     }
-
     appliedFilters.genres = [...selectedGenres];
-    console.log(appliedFilters.genres);
-    filteredMovies = movies.filter((movie) => {
+    const filteredMovies = filterMovies();
+    renderMoviesList(filteredMovies);
+};
+
+const filterMovies = () => {
+    const filteredMovies = movies.filter((movie) => {
         let containsGenre = true;
         for (let appliedGenre of appliedFilters.genres) {
             if (!movie.genre.includes(appliedGenre)) {
@@ -132,5 +144,5 @@ const filterApplyHandler = (event) => {
         return containsGenre;
     });
 
-    renderMoviesList(filteredMovies);
+    return filteredMovies;
 };

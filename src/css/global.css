@@ -2,6 +2,9 @@
 @import url("./buttons.css");
 @import url("./movies/movie-filters");
 
+* {
+    box-sizing: border-box;
+}
 body {
     background-color: var(--dark);
     font-family: "Montserrat", sans-serif;
