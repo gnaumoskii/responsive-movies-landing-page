@@ -87,7 +87,7 @@
 .movie-card:hover {
     /* user-select: none; */
     cursor: pointer;
-    box-shadow: 0 0 16px 4px black;
+    box-shadow: 0 0 8px 4px var(--dark2);
 }
 
 .movie-card:hover .movie-card__details {

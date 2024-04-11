@@ -1,6 +1,7 @@
 {
     "movies": [
         {
+            "id": "0",
             "title": "The Matrix",
             "year": 1999,
             "description": "A computer hacker learns that the world he lives in is actually a computer simulation and fights to free humanity.",
@@ -11,6 +12,7 @@
             "poster": "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg"
         },
         {
+            "id": "1",
             "title": "Mad Max: Fury Road",
             "year": 2015,
             "description": "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search of a safe haven.",
@@ -21,6 +23,7 @@
             "poster": "https://rukminim2.flixcart.com/image/850/1000/jt8yxe80/poster/6/2/b/medium-madmax4-mad-max-fury-road-poster-for-room-office-13-inch-original-imafehz6xhz8f6sh.jpeg?q=20&crop=false"
         },
         {
+            "id": "2",
             "title": "Raiders of the Lost Ark",
             "year": 1981,
             "description": "Indiana Jones is hired by the U.S. government to find the Ark of the Covenant before Nazis can claim its mystical powers.",
@@ -31,6 +34,7 @@
             "poster": "https://images.photowall.com/products/71040/raiders-of-the-lost-ark.jpg?h=699&q=85"
         },
         {
+            "id": "3",
             "title": "Kill Bill: Vol. 1",
             "year": 2003,
             "description": "The Bride wakens from a four-year coma and sets out on a path of revenge against the assassins who tried to kill her and her unborn child.",
@@ -41,6 +45,7 @@
             "poster": "https://cdn.europosters.eu/image/750/kill-bill-vol-1-i97652.jpg"
         },
         {
+            "id": "4",
             "title": "Crouching Tiger, Hidden Dragon",
             "year": 2000,
             "description": "A skilled swordsman is given the task of delivering a powerful sword to a worthy successor. Things get complicated when the sword is stolen.",
@@ -50,6 +55,7 @@
             "poster": "https://m.media-amazon.com/images/I/51pPllw92eL._AC_UF894,1000_QL80_.jpg"
         },
         {
+            "id": "5",
             "title": "John Wick",
             "year": 2014,
             "description": "A retired hitman comes out of retirement to seek revenge on the gangsters who killed his dog.",
@@ -60,6 +66,7 @@
             "poster": "https://i.ebayimg.com/images/g/GtgAAOSwishdix44/s-l1200.webp"
         },
         {
+            "id": "6",
             "title": "The Shining",
             "year": 1980,
             "description": "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrifying forebodings from both past and future.",
@@ -69,6 +76,7 @@
             "poster": "https://filmartgallery.com/cdn/shop/files/The-Shining-Vintage-Movie-Poster-Original-30x40.jpg?v=1688504483"
         },
         {
+            "id": "7",
             "title": "Get Out",
             "year": 2017,
             "description": "A Black man visits his white girlfriend's family for the weekend, where he discovers a sinister truth about their intentions.",
@@ -78,6 +86,7 @@
             "poster": "https://m.media-amazon.com/images/I/91G9ewuNN9L._AC_UF894,1000_QL80_.jpg"
         },
         {
+            "id": "8",
             "title": "Hereditary",
             "year": 2018,
             "description": "The Graham family grapples with the terrifying secrets of their ancestry after the death of their grandmother.",
@@ -87,6 +96,7 @@
             "poster": "https://m.media-amazon.com/images/I/91U6sekg9yL.jpg"
         },
         {
+            "id": "9",
             "title": "[REC]",
             "year": 2007,
             "description": "A television reporter and cameraman follow emergency workers into a quarantined apartment building and soon realize the situation is far worse than they anticipated.",
@@ -96,6 +106,7 @@
             "poster": "https://upload.wikimedia.org/wikipedia/en/4/4b/Rec_poster.jpg"
         },
         {
+            "id": "10",
             "title": "It Follows",
             "year": 2014,
             "description": "A young woman learns she is haunted by a mysterious entity that only she can see. In order to survive, she must pass this curse on to someone else.",
@@ -105,6 +116,7 @@
             "poster": "https://upload.wikimedia.org/wikipedia/en/9/9e/It_Follows_%28poster%29.jpg"
         },
         {
+            "id": "11",
             "title": "The Babadook",
             "year": 2014,
             "description": "A widowed single mother and her son deal with the arrival of a sinister entity after reading a mysterious children's book.",
@@ -114,6 +126,7 @@
             "poster": "https://upload.wikimedia.org/wikipedia/en/d/d7/The-Babadook-Poster.jpg"
         },
         {
+            "id": "12",
             "title": "Lord of the Rings: The Fellowship of the Ring",
             "year": 2001,
             "description": "A hobbit named Frodo inherits the One Ring, and with the help of a fellowship embarks on a quest to destroy it in the fires of Mount Doom.",
@@ -124,6 +137,7 @@
             "poster": "https://m.media-amazon.com/images/I/81EBp0vOZZL._AC_UF894,1000_QL80_.jpg"
         },
         {
+            "id": "13",
             "title": "Spirited Away",
             "year": 2001,
             "description": "A sullen young girl wanders into the spirit world and must work in a bathhouse for spirits to find her way back.",
@@ -134,6 +148,7 @@
             "poster": "https://m.media-amazon.com/images/I/61ON14PVzoL._AC_UF894,1000_QL80_.jpg"
         },
         {
+            "id": "14",
             "title": "Pan's Labyrinth",
             "year": 2006,
             "description": "In war-torn Spain, a young girl escapes into a fantastical world of faeries and monsters, where she believes she may find a way to save her ailing mother.",
@@ -144,6 +159,7 @@
             "poster": "https://m.media-amazon.com/images/I/717c+6MsdDL._AC_UF894,1000_QL80_.jpg"
         },
         {
+            "id": "15",
             "title": "Howl's Moving Castle",
             "year": 2004,
             "description": "A young woman cursed with an old age spell finds herself working for a powerful but kind wizard.",
@@ -154,6 +170,7 @@
             "poster": "https://upload.wikimedia.org/wikipedia/en/a/a0/Howls-moving-castleposter.jpg"
         },
         {
+            "id": "16",
             "title": "Princess Mononoke",
             "year": 1997,
             "description": "On a journey to find a cure for a mysterious illness, a young warrior prince encounters forest gods, demons, and nature spirits in a battle between humanity and the natural world.",
@@ -164,6 +181,7 @@
             "poster": "https://i.ebayimg.com/images/g/0AEAAOxypNtSmhV9/s-l1600.jpg"
         },
         {
+            "id": "17",
             "title": "The NeverEnding Story",
             "year": 1984,
             "description": "A shy boy discovers a magical book that takes him to the fantastical world of Fantasia, a land filled with wonder and creatures in need of a hero.",
@@ -173,6 +191,7 @@
             "poster": "https://m.media-amazon.com/images/I/71zUTYxDosL._AC_UF894,1000_QL80_.jpg"
         },
         {
+            "id": "18",
             "title": "Groundhog Day",
             "year": 1993,
             "description": "A weatherman finds himself reliving the same day over and over again.",
@@ -183,6 +202,7 @@
             "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY3agvfOpqLfMxE7QAkNEziLHjt648aZLXbxJkcCffsQ&s"
         },
         {
+            "id": "19",
             "title": "You Don't Mess with the Zohan",
             "year": 2008,
             "description": "Zohan, an Israeli counterterrorist commando, stages his own death when he grows tired of his job and travels to New York City to pursue his lifelong dream of having a career in hairstyling.",
@@ -193,6 +213,7 @@
             "poster": "https://image.tmdb.org/t/p/original/8t5eADUDKB6XP2YthLmnca49ZYk.jpg"
         },
         {
+            "id": "20",
             "title": "The Big Lebowski",
             "year": 1998,
             "description": "A mistaken identity throws a carefree bowler into the midst of a Los Angeles kidnapping scheme.",
@@ -203,6 +224,7 @@
             "poster": "https://m.media-amazon.com/images/I/91PfUyEzvAL.jpg"
         },
         {
+            "id": "21",
             "title": "Bridesmaids",
             "year": 2011,
             "description": "A woman's life gets complicated when she's entrusted with planning her best friend's wedding.",
@@ -212,6 +234,7 @@
             "poster": "https://m.media-amazon.com/images/I/71tcRxPDnjL.jpg"
         },
         {
+            "id": "22",
             "title": "21 Jump Street",
             "year": 2012,
             "description": "Two undercover cops are forced to go back to high school to bust a drug ring.",
@@ -222,6 +245,7 @@
             "poster": "https://m.media-amazon.com/images/I/714aUKa8fbL._AC_UF894,1000_QL80_.jpg"
         },
         {
+            "id": "23",
             "title": "The Shawshank Redemption",
             "year": 1994,
             "description": "A man is sentenced to life in Shawshank prison for the murder of his wife, but he never gives up hope of freedom.",
@@ -232,6 +256,7 @@
             "poster": "https://m.media-amazon.com/images/I/71715eBi1sL.jpg"
         },
         {
+            "id": "24",
             "title": "Schindler's List",
             "year": 1993,
             "description": "The true story of Oskar Schindler, a German businessman who saved the lives of over a thousand Jews during the Holocaust.",
@@ -241,6 +266,7 @@
             "poster": "https://m.media-amazon.com/images/I/71vKAOMv8nL.jpg"
         },
         {
+            "id": "25",
             "title": "The Godfather",
             "year": 1972,
             "description": "The story of the Corleone family under patriarch Vito Corleone, focusing on the transformation of his youngest son, Michael, from reluctant family outsider to ruthless mafia boss.",
@@ -251,6 +277,7 @@
             "poster": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
         },
         {
+            "id": "26",
             "title": "Whiplash",
             "year": 2014,
             "description": "Andrew enrols in a music conservatory to become a drummer. But he is mentored by Terence Fletcher, whose unconventional training methods push him beyond the boundaries of reason and sensibility.",
@@ -260,6 +287,7 @@
             "poster": "https://static.displate.com/280x392/displate/2023-12-25/8270f656046038e6a0c087a288099913_6b7a0726af99ba98e52cb86e7fbab798.jpg"
         },
         {
+            "id": "27",
             "title": "The Pursuit of Happiness",
             "year": 2006,
             "description": "A struggling single father and his son face homelessness as they pursue a better life.",
@@ -269,6 +297,7 @@
             "poster": "https://m.media-amazon.com/images/I/41AoisVN16L._AC_UF894,1000_QL80_.jpg"
         },
         {
+            "id": "28",
             "title": "Good Will Hunting",
             "year": 1997,
             "description": "A rebellious young janitor with a gift for mathematics is sent to therapy to confront his past traumas.",
@@ -278,6 +307,7 @@
             "poster": "https://m.media-amazon.com/images/I/71JBbULtGSL._AC_UF894,1000_QL80_.jpg"
         },
         {
+            "id": "29",
             "title": "2001: A Space Odyssey",
             "year": 1968,
             "description": "A journey through the history of mankind, aided by mysterious black monoliths, with themes of humanity's evolution, technology, and artificial intelligence.",
@@ -287,6 +317,7 @@
             "poster": "https://m.media-amazon.com/images/M/MV5BMmNlYzRiNDctZWNhMi00MzI4LThkZTctMTUzMmZkMmFmNThmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
         },
         {
+            "id": "30",
             "title": "Blade Runner",
             "year": 1982,
             "description": "In a future Los Angeles, a blade runner (retired replicant hunter) is tasked with retiring a group of replicants who have escaped back to Earth.",
@@ -296,6 +327,7 @@
             "poster": "https://m.media-amazon.com/images/M/MV5BNzQzMzJhZTEtOWM4NS00MTdhLTg0YjgtMjM4MDRkZjUwZDBlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg"
         },
         {
+            "id": "31",
             "title": "Alien",
             "year": 1979,
             "description": "The crew of a commercial space tug is awakened from their hypersleep to investigate a distress signal, leading them to a terrifying alien encounter.",
@@ -306,6 +338,7 @@
             "poster": "https://m.media-amazon.com/images/I/71Ev0SG6vPL.jpg"
         },
         {
+            "id": "32",
             "title": "Arrival",
             "year": 2016,
             "description": "A linguist is recruited by the military to help them understand the language of aliens who have arrived on Earth.",
@@ -316,6 +349,7 @@
             "poster": "https://m.media-amazon.com/images/I/41oKKo0YZZL._AC_UF894,1000_QL80_.jpg"
         },
         {
+            "id": "33",
             "title": "Inception",
             "year": 2010,
             "description": "A professional thief who steals corporate secrets through use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
@@ -326,6 +360,7 @@
             "poster": "https://m.media-amazon.com/images/I/71uKM+LdgFL._AC_UF894,1000_QL80_.jpg"
         },
         {
+            "id": "34",
             "title": "Taxi Driver",
             "year": 1976,
             "description": "A mentally unstable Vietnam veteran works as a night taxi driver in New York City, where the crime and grime consume him as he spirals into violence.",
