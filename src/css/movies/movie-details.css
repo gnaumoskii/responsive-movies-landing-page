@@ -40,7 +40,7 @@
 }
 
 .movie-details__content__info__description,
-.movie-details__content__info__year,
+.movie-details__content__info__release-date,
 .movie-details__content__info__genre {
     color: var(--gray-light);
 }

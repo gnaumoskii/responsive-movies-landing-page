@@ -47,6 +47,10 @@
     display: none;
 }
 
+.movie-form__input-group__input[type="date"] {
+    color-scheme: dark;
+}
+
 .movie-form__input-group__genre {
     color: white;
     background-color: var(--dark);

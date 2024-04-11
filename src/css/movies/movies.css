@@ -1,5 +1,13 @@
 @import url("./movie-details.css");
 
+.movies-options {
+    margin-left: 16px;
+}
+
+.movies-options__btn-filter {
+    margin-left: 12px;
+}
+
 .movies-list__item {
     height: 320px;
 }
@@ -40,7 +48,7 @@
     font-weight: 400;
 }
 
-.movie-card__details-info__year {
+.movie-card__details-info__release-date {
     padding: 0;
     margin: 0;
 }

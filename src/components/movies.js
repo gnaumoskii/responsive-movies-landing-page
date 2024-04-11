@@ -28,12 +28,11 @@ const createMovieCard = (movie) => {
                 <div class="movie-card__details">
                 <p class="movie-card__details__title">${movie.title}</p>
                     <div class="movie-card__details-info">
-                        <p class="movie-card__details-info__year">${movie.year}</p>
+                        <p class="movie-card__details-info__release-date">${new Date(movie.releaseDate).getFullYear()}</p>
                     </div>
                 </div>
             </div>
-        </li>`
-    );
+        </li>`);
 };
 
 export const openMovieDetailsModal = (movie) => {
@@ -41,8 +40,6 @@ export const openMovieDetailsModal = (movie) => {
     const modal = createModal(movieDetailsElement);
     $(".movies-page").append(modal);
 };
-
-
 
 const createMovieDetailsElement = (movie) => {
     const movieDetails = $(`
@@ -59,8 +56,12 @@ const createMovieDetailsElement = (movie) => {
                 <h1 class="movie-details__content__info__title">${movie.title}</h1>
                 <p class="movie-details__content__info__description">${movie.description}</p>
                 <div>
-                    <p class="movie-details__content__info__label">Release Year</p>
-                    <p class="movie-details__content__info__year">${movie.year}</p>
+                    <p class="movie-details__content__info__label">Release Date</p>
+                    <p class="movie-details__content__info__release-date">${new Date(movie.releaseDate).toLocaleDateString(undefined, {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                    })}</p>
                 </div>
                 <div>
                     <p class="movie-details__content__info__label">Genre</p>

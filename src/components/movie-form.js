@@ -4,8 +4,6 @@ import { movies, renderMoviesComponent, openMovieDetailsModal } from "./movies";
 export const createMovieFormElement = () => {};
 export const openAddMovieModal = () => {
     const addFormContainer = createFormElement();
-    $(addFormContainer).prepend("<h1 class='movie-form__container__heading'>Edit Movie</h1>");
-
     const addForm = $(addFormContainer).find(".movie-form")[0];
     const cancelButton = $(addFormContainer).find(".movie-form__buttons__btn-cancel")[0];
 
@@ -24,8 +22,6 @@ export const openAddMovieModal = () => {
 
 export const openEditMovieModal = (movie) => {
     const editFormContainer = createFormElement(movie);
-    $(editFormContainer).prepend("<h1 class='movie-form__container__heading'>Edit Movie</h1>");
-
     const editForm = $(editFormContainer).find(".movie-form")[0];
     const cancelButton = $(editFormContainer).find(".movie-form__buttons__btn-cancel")[0];
 
@@ -46,6 +42,7 @@ export const openEditMovieModal = (movie) => {
 const createFormElement = (movieData) => {
     return $(`
     <div class="movie-form__container">
+            <h1 class='movie-form__container__heading'>${movieData ? "Edit Movie" : "Add Movie"}</h1>
             <form class="movie-form">
                 <div class="movie-form__input-group">
                     <label class="movie-form__input-group__label" for="movie-title">Title</label>
@@ -58,11 +55,11 @@ const createFormElement = (movieData) => {
                     }</textarea>
                 </div>
                 <div class="movie-form__input-group">
-                    <label class="movie-form__input-group__label" for="movie-year">Year</label>
-                    <input class="movie-form__input-group__input" type="text" id="movie-year" name="movie-year" value="${movieData ? movieData.year : ""}"/>
+                    <label class="movie-form__input-group__label" for="movie-release-date">Release Date</label>
+                    <input class="movie-form__input-group__input" type="date" id="movie-release-date" name="movie-release-date" value="${movieData ? movieData.releaseDate : ""}"/>
                 </div>
                 <div>
-                    <label class="movie-form__input-group__label" for="movie-year">Genre</label>
+                    <label class="movie-form__input-group__label">Genre</label>
                     <div class="movie-form__input-group__genres">
                         <label class="movie-form__input-group__genre" for="movie-genre--action">
                             <input 
@@ -193,7 +190,7 @@ const addFormSubmitHandler = (event) => {
     const form = event.target;
     const title = form.elements["movie-title"].value;
     const description = form.elements["movie-description"].value;
-    const year = form.elements["movie-year"].value;
+    const releaseDate = form.elements["movie-release-date"].value;
     const genres = $(form).find(".movie-form__input-group__input--checkbox");
 
     const selectedGenres = [];
@@ -205,7 +202,7 @@ const addFormSubmitHandler = (event) => {
     }
 
     const poster = form.elements["movie-poster"].value;
-    const newMovie = { id: movies.length.toString(), title, year: +year, description, genre: selectedGenres, poster };
+    const newMovie = { id: movies.length.toString(), title, releaseDate, description, genre: selectedGenres, poster };
     const formIsValid = validateForm();
     if (!formIsValid) {
     }
@@ -221,7 +218,7 @@ const editFormSubmitHandler = (event, movieId) => {
     const form = event.target;
     const title = form.elements["movie-title"].value;
     const description = form.elements["movie-description"].value;
-    const year = form.elements["movie-year"].value;
+    const releaseDate = form.elements["movie-release-date"].value;
     const genres = $(form).find(".movie-form__input-group__input--checkbox");
 
     const selectedGenres = [];
@@ -240,7 +237,7 @@ const editFormSubmitHandler = (event, movieId) => {
     }
     movie.title = title;
     movie.description = description;
-    movie.year = year;
+    movie.releaseDate = releaseDate;
     movie.genre = selectedGenres;
     movie.poster = poster;
 
