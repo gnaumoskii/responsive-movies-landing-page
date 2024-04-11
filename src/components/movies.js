@@ -1,12 +1,13 @@
 import "../css/movies/movies.css";
 import moviesData from "../data/movies.json";
-import { getEditFormElement, openEditFormModal } from "./movie-form";
+import { openEditMovieModal, openAddMovieModal } from "./movie-form";
 import { closeModal, createModal } from "./utility/modal";
 
 // Movies state
 export let { movies } = moviesData;
 
 export const renderMoviesComponent = () => {
+    $(".movies-options__btn-add").on("click", openAddMovieModal);
     renderMoviesList(movies);
 };
 
@@ -85,5 +86,5 @@ const deleteMovie = (id) => {
 };
 
 const editMovie = (movie) => {
-    openEditFormModal(movie);
+    openEditMovieModal(movie);
 };

@@ -2,14 +2,33 @@ import { closeModal, createModal } from "./utility/modal";
 import "../css/movies/movie-form.css";
 import { movies, renderMoviesComponent, openMovieDetailsModal } from "./movies";
 export const createMovieFormElement = () => {};
+export const openAddMovieModal = () => {
+    const addFormContainer = createFormElement();
+    $(addFormContainer).prepend("<h1 class='movie-form__container__heading'>Edit Movie</h1>");
 
-export const openEditFormModal = (movie) => {
+    const addForm = $(addFormContainer).find(".movie-form")[0];
+    const cancelButton = $(addFormContainer).find(".movie-form__buttons__btn-cancel")[0];
+
+    $(addForm).on("submit", addFormSubmitHandler);
+    $(cancelButton).on("click", () => {
+        closeModal();
+    });
+
+    // Close all previous modals before opening the edit form modal.
+    closeModal();
+
+    // Create the edit modal and append it to the page component.
+    const addModal = createModal(addFormContainer);
+    $(".movies-page").append(addModal);
+};
+
+export const openEditMovieModal = (movie) => {
     const editFormContainer = createFormElement(movie);
     $(editFormContainer).prepend("<h1 class='movie-form__container__heading'>Edit Movie</h1>");
 
     const editForm = $(editFormContainer).find(".movie-form")[0];
     const cancelButton = $(editFormContainer).find(".movie-form__buttons__btn-cancel")[0];
-    
+
     $(editForm).on("submit", (e) => editFormSubmitHandler(e, movie.id));
     $(cancelButton).on("click", () => {
         closeModal();
@@ -48,7 +67,7 @@ const createFormElement = (movieData) => {
                         <label class="movie-form__input-group__genre" for="movie-genre--action">
                             <input 
                                 class="movie-form__input-group__input--checkbox" 
-                                ${movieData.genre.includes("ACTION") ? 'checked' : ''} 
+                                ${movieData && movieData.genre.includes("ACTION") ? "checked" : ""} 
                                 type="checkbox" 
                                 name="movie-genre--action" 
                                 id="movie-genre--action" 
@@ -59,7 +78,7 @@ const createFormElement = (movieData) => {
                         <label class="movie-form__input-group__genre" for="movie-genre--adventure">
                             <input 
                                 class="movie-form__input-group__input--checkbox" 
-                                ${movieData.genre.includes("ADVENTURE") ? 'checked' : ''} 
+                                ${movieData && movieData.genre.includes("ADVENTURE") ? "checked" : ""} 
                                 type="checkbox" 
                                 name="movie-genre--adventure" 
                                 id="movie-genre--adventure" 
@@ -70,7 +89,7 @@ const createFormElement = (movieData) => {
                         <label class="movie-form__input-group__genre" for="movie-genre--animation">
                             <input 
                                 class="movie-form__input-group__input--checkbox" 
-                                ${movieData.genre.includes("ANIMATION") ? 'checked' : ''} 
+                                ${movieData && movieData.genre.includes("ANIMATION") ? "checked" : ""} 
                                 type="checkbox" 
                                 name="movie-genre--animation" 
                                 id="movie-genre--animation" 
@@ -81,7 +100,7 @@ const createFormElement = (movieData) => {
                         <label class="movie-form__input-group__genre" for="movie-genre--comedy">
                             <input 
                                 class="movie-form__input-group__input--checkbox" 
-                                ${movieData.genre.includes("COMEDY") ? 'checked' : ''} 
+                                ${movieData && movieData.genre.includes("COMEDY") ? "checked" : ""} 
                                 type="checkbox" 
                                 name="movie-genre--comedy" 
                                 id="movie-genre--comedy" 
@@ -92,7 +111,7 @@ const createFormElement = (movieData) => {
                         <label class="movie-form__input-group__genre" for="movie-genre--crime">
                             <input 
                                 class="movie-form__input-group__input--checkbox" 
-                                ${movieData.genre.includes("CRIME") ? 'checked' : ''} 
+                                ${movieData && movieData.genre.includes("CRIME") ? "checked" : ""} 
                                 type="checkbox" 
                                 name="movie-genre--crime" 
                                 id="movie-genre--crime" 
@@ -103,7 +122,7 @@ const createFormElement = (movieData) => {
                         <label class="movie-form__input-group__genre" for="movie-genre--drama">
                             <input 
                                 class="movie-form__input-group__input--checkbox" 
-                                ${movieData.genre.includes("DRAMA") ? 'checked' : ''} 
+                                ${movieData && movieData.genre.includes("DRAMA") ? "checked" : ""} 
                                 type="checkbox" 
                                 name="movie-genre--drama" 
                                 id="movie-genre--drama" 
@@ -114,7 +133,7 @@ const createFormElement = (movieData) => {
                         <label class="movie-form__input-group__genre" for="movie-genre--fantasy">
                             <input 
                                 class="movie-form__input-group__input--checkbox" 
-                                ${movieData.genre.includes("FANTASY") ? 'checked' : ''} 
+                                ${movieData && movieData.genre.includes("FANTASY") ? "checked" : ""} 
                                 type="checkbox" 
                                 name="movie-genre--fantasy" 
                                 id="movie-genre--fantasy" 
@@ -125,7 +144,7 @@ const createFormElement = (movieData) => {
                         <label class="movie-form__input-group__genre" for="movie-genre--horror">
                             <input 
                                 class="movie-form__input-group__input--checkbox" 
-                                ${movieData.genre.includes("HORROR") ? 'checked' : ''} 
+                                ${movieData && movieData.genre.includes("HORROR") ? "checked" : ""} 
                                 type="checkbox" 
                                 name="movie-genre--horror" 
                                 id="movie-genre--horror" 
@@ -136,7 +155,7 @@ const createFormElement = (movieData) => {
                         <label class="movie-form__input-group__genre" for="movie-genre--sci-fi">
                             <input 
                                 class="movie-form__input-group__input--checkbox" 
-                                ${movieData.genre.includes("SCI-FI") ? 'checked' : ''} 
+                                ${movieData && movieData.genre.includes("SCI-FI") ? "checked" : ""} 
                                 type="checkbox" 
                                 name="movie-genre--sci-fi" 
                                 id="movie-genre--sci-fi" 
@@ -168,6 +187,34 @@ const validateForm = (form) => {
     return true;
 };
 
+const addFormSubmitHandler = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const title = form.elements["movie-title"].value;
+    const description = form.elements["movie-description"].value;
+    const year = form.elements["movie-year"].value;
+    const genres = $(form).find(".movie-form__input-group__input--checkbox");
+
+    const selectedGenres = [];
+    // Loops through all genre checkboxes and adds the selected genres to the array.
+    for (let genre of genres) {
+        if (genre.checked === true) {
+            selectedGenres.push(genre.dataset.value);
+        }
+    }
+
+    const poster = form.elements["movie-poster"].value;
+    const newMovie = { id: movies.length.toString(), title, year: +year, description, genre: selectedGenres, poster };
+    const formIsValid = validateForm();
+    if (!formIsValid) {
+    }
+
+    movies.push(newMovie);
+    closeModal();
+    renderMoviesComponent();
+};
+
 const editFormSubmitHandler = (event, movieId) => {
     event.preventDefault();
 
@@ -179,14 +226,14 @@ const editFormSubmitHandler = (event, movieId) => {
 
     const selectedGenres = [];
     // Loops through all genre checkboxes and adds the selected genres to the array.
-    for(let genre of genres) {
-        if(genre.checked === true) {
+    for (let genre of genres) {
+        if (genre.checked === true) {
             selectedGenres.push(genre.dataset.value);
         }
     }
 
     const poster = form.elements["movie-poster"].value;
-    const movie = movies.find((movie) => (movie.id === movieId));
+    const movie = movies.find((movie) => movie.id === movieId);
     const formIsValid = validateForm();
 
     if (!formIsValid) {
