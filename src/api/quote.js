@@ -1,5 +1,5 @@
 // Movie quotes data fetched from github json file
-const URL = "https://raw.githubusercontent.com/vilaboim/movie-quotes/master/movie-quotes.jso";
+const URL = "https://raw.githubusercontent.com/vilaboim/movie-quotes/master/movie-quotes.json";
 
 export const getQuote = async () => {
     const response = await fetch(URL);

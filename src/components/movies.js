@@ -25,6 +25,12 @@ export const renderMoviesComponent = () => {
 
 const renderMoviesList = (movies) => {
     $("ul.movies-list").html("");
+
+    if(movies.length === 0) {
+        $("ul.movies-list").html("<p class='movies-list__message col-12'>The current movie list is empty.</p>");
+        return;
+    }
+
     $.each(movies, (index, movie) => {
         const movieCardElement = createMovieCardElement(movie);
         movieCardElement.css('animation-delay', `${index/20}s`);

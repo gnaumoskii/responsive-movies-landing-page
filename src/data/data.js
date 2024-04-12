@@ -8,7 +8,7 @@ export const saveMoviesData = (updatedMovies) => {
     localStorage.setItem("movies", JSON.stringify(movies));
 }
 
-// Persistant data handled in local storage
+// Persistent data handled in local storage, moviesData is the initial movies list
 if(!localStorage.getItem("movies")) {
     localStorage.setItem("movies", JSON.stringify(moviesData.movies));
     movies = moviesData.movies;
