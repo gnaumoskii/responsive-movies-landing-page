@@ -36,12 +36,16 @@
     padding: 4px 8px;
     user-select: none;
     cursor: pointer;
-    transition: 0.2s ease-out;
+    transition: border 0.2s ease-out, background-color 0.2s ease-out, color 0.2s ease-out, font-weight 0.2s ease-out;
     border-radius: 4px;
     font-size: 14px;
 }
 
-.filters-form__genres__input-group__input--checkbox:checked + .filters-form__genres__input-group__label{
+.filters-form__genres__input-group__label:hover {
+    border: 2px solid var(--gray-medium);
+}
+
+.filters-form__genres__input-group__input--checkbox:checked + .filters-form__genres__input-group__label {
     color: black;
     font-weight: bold;
     padding: 4px 8px;

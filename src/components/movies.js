@@ -8,11 +8,11 @@ export let { movies } = moviesData;
 export const appliedFilters = {
     genres: [],
 };
+
 $(document).ready(() => {
     $(".movies-options__filters-form").on("submit", applyFiltersHandler);
     $(".movies-options__buttons__btn-add").on("click", openAddMovieModal);
     $(".movies-options__buttons__btn-filter").on("click", () => {
-        console.log("expand filters");
         toggleExpandFilterOptions();
     });
 });
@@ -20,12 +20,14 @@ $(document).ready(() => {
 export const renderMoviesComponent = () => {
     const filteredMovies = filterMovies();
     renderMoviesList(filteredMovies);
+    
 };
 
 const renderMoviesList = (movies) => {
     $("ul.movies-list").html("");
     $.each(movies, (index, movie) => {
         const movieCard = createMovieCard(movie);
+        movieCard.css('animation-delay', `${index/20}s`);
         $(movieCard).on("click", () => openMovieDetailsModal(movie));
         $("ul.movies-list").append(movieCard);
     });
@@ -54,29 +56,31 @@ export const openMovieDetailsModal = (movie) => {
 
 const createMovieDetailsElement = (movie) => {
     const movieDetails = $(`
-    <div class="movie-details container">
+    <div class="movie-details container-fluid">
         <div class="movie-details__content">
             <div class="movie-details__content__poster-container">
                 <img src="${movie.poster || "#"}" alt="${movie.title}" class="movie-details__content__poster">
             </div>
             <div class="movie-details__content__info">
                 <div class="movie-details__content__info__buttons">
-                    <button class="buttons__btn-edit btn-primary--gray">Edit</button>
-                    <button class="buttons__btn-delete btn-secondary--danger">Delete</button>
+                    <button class="buttons__btn-edit custom-btn-primary--gray">Edit</button>
+                    <button class="buttons__btn-delete custom-btn-secondary--danger">Delete</button>
                 </div>
                 <h1 class="movie-details__content__info__title">${movie.title}</h1>
                 <p class="movie-details__content__info__description">${movie.description}</p>
-                <div>
-                    <p class="movie-details__content__info__label">Release Date</p>
-                    <p class="movie-details__content__info__release-date">${new Date(movie.releaseDate).toLocaleDateString(undefined, {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                    })}</p>
-                </div>
-                <div>
-                    <p class="movie-details__content__info__label">Genre</p>
-                    <p class="movie-details__content__info__genre">${movie.genre.join(", ").toLowerCase()}</p>
+                <div class="movie-detials__content__info-wrapper">
+                    <div>
+                        <p class="movie-details__content__info__label">Release Date</p>
+                        <p class="movie-details__content__info__release-date">${new Date(movie.releaseDate).toLocaleDateString(undefined, {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                        })}</p>
+                    </div>
+                    <div>
+                        <p class="movie-details__content__info__label">Genre</p>
+                        <p class="movie-details__content__info__genre">${movie.genre.join(", ").toLowerCase()}</p>
+                    </div>
                 </div>
             </div>
         </div>

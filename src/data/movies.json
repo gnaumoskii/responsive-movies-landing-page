@@ -73,7 +73,7 @@
             "genre": [
                 "HORROR"
             ],
-            "poster": "https://filmartgallery.com/cdn/shop/files/The-Shining-Vintage-Movie-Poster-Original-30x40.jpg?v=1688504483"
+            "poster": "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg"
         },
         {
             "id": "7",
@@ -360,6 +360,7 @@
         },
         {
             "id": "34",
+            "title": "Taxi Driver",
             "releaseDate": "1976-02-08",
             "year": 1976,
             "description": "A mentally unstable Vietnam veteran works as a night taxi driver in New York City, where the crime and grime consume him as he spirals into violence.",

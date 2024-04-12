@@ -25,9 +25,11 @@ export const createModal = (content) => {
     modalContent.append(content);
     modal.append(modalBackdrop);
     modal.append(modalContent);
+    $('body').css('overflow-y', 'hidden');
     return modal;
 };
 
 export const closeModal = (event) => {
     $(".custom-modal").remove();
+    $('body').css('overflow-y', 'auto');
 };

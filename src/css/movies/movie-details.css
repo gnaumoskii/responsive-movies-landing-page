@@ -10,8 +10,8 @@
 
 .movie-details__content__poster-container {
     height: 420px;
-    
-    background-color: var(--dark2)
+    display: flex;
+  
 }
 
 .movie-details__content__poster {
@@ -24,8 +24,13 @@
 .movie-details__content__info {
     max-width: 500px;
     color: white;
-    
 }
+
+.movie-detials__content__info-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 .movie-details__content__info__label {
     
     margin: 0;
@@ -62,4 +67,20 @@
 
 .buttons__btn-delete {
     margin-left: 12px;
+}
+
+@media (max-width: 576px) {
+    .movie-details__content {
+        display: flex;
+        gap: 48px;
+        flex-direction: column;
+        flex-flow: column-reverse;
+    }
+
+    .movie-detials__content__info-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        gap: 24px;
+    }
 }

@@ -3,6 +3,11 @@
 .movies {
     padding-bottom: 64px;
 }
+
+.movies-list__item {
+    animation: fade-from-top 0.5s ease-out backwards;
+}
+
 .movies-options {
     padding-left: 16px;
     border-bottom: 1px solid var(--gray-dark);
@@ -21,8 +26,14 @@
     margin-left: 12px;
 }
 
+
+
 .movies-options__buttons__btn-filter.expanded {
     background-color: var(--gray-dark);
+}
+
+.movies-options__buttons__btn-filter svg{
+    transition: transform 0.2s ease-out;
 }
 
 .movies-options__buttons__btn-filter.expanded svg{
@@ -41,7 +52,7 @@
     overflow: hidden;
     background-color: var(--dark2);
     position: relative;
-    transition: 0.2s ease-out;
+    transition: box-shadow 0.2s ease-out;
 }
 
 .movie-card__details {
@@ -57,7 +68,8 @@
     justify-content: center;
     flex-direction: column;
     transform: translateY(5px);
-    transition: 0.15s ease-out;
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+
 }
 
 .movie-card__details-info {
@@ -104,13 +116,13 @@
     position: absolute;
     top: 0;
     left: 0;
-    transition: 0.15s ease-out;
+    transition: opacity 0.2s ease-out, filter 0.2s ease-out;
 }
 
 .movie-card__poster {
     object-fit: cover;
     width: 100%;
-    transition: 0.15s ease-out;
+    transition: width 0.2s ease-out;
 }
 
 .movie-card:hover {
@@ -126,7 +138,6 @@
 
 .movie-card:hover .movie-card__poster-container {
     opacity: 0.25;
-    
     filter: blur(2px);
 }
 

@@ -1,5 +1,5 @@
-.btn-primary,
-.btn-primary--gray {
+.custom-btn-primary,
+.custom-btn-primary--gray {
     outline: none;
     color: white;
     padding: 6px 16px;
@@ -9,26 +9,27 @@
     position: relative;
     border: 2px solid transparent;
     transition: background-color 0.2s ease-out;
+    font-family: "Montserrat", sans-serif;
 }
 
-.btn-primary {
+.custom-btn-primary {
     background-color: var(--green-light);
 }
 
-.btn-primary--gray {
+.custom-btn-primary--gray {
     background-color: var(--gray-dark);
 }
 
-.btn-primary:hover {
+.custom-btn-primary:hover {
     background-color: var(--green-medium);
 }
 
-.btn-primary--gray:hover {
+.custom-btn-primary--gray:hover {
     background-color: var(--gray-medium);
 }
 
-.btn-secondary,
-.btn-secondary--danger {
+.custom-btn-secondary,
+.custom-btn-secondary--danger {
     outline: none;
     color: white;
     padding: 6px 16px;
@@ -40,16 +41,16 @@
     z-index: 0;
 }
 
-.btn-secondary {
+.custom-btn-secondary {
     border: 2px solid var(--gray-dark);
 }
 
-.btn-secondary--danger {
+.custom-btn-secondary--danger {
     border: 2px solid var(--red-medium);
 }
 
-.btn-secondary::before,
-.btn-secondary--danger::before {
+.custom-btn-secondary::before,
+.custom-btn-secondary--danger::before {
     content: "";
     position: absolute;
     top: 0;
@@ -59,18 +60,19 @@
     overflow: hidden;
     transition: width 0.2s ease-out;
     z-index: -1;
+    font-family: "Montserrat", sans-serif;
 }
 
-.btn-secondary::before {
+.custom-btn-secondary::before {
     background-color: var(--gray-dark);
 }
 
-.btn-secondary--danger::before {
+.custom-btn-secondary--danger::before {
     background-color: var(--red-medium);
 }
 
-.btn-secondary:hover::before,
-.btn-secondary--danger:hover::before {
+.custom-btn-secondary:hover::before,
+.custom-btn-secondary--danger:hover::before {
     width: 100%;
     left: 0;
 }

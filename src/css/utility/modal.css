@@ -9,17 +9,14 @@
     position: fixed;
     top: 0;
     left: 0;
-    animation: fade-from-top 0.35s ease-out;
-    
+    animation: fade-in 0.2s ease-out;
 }
-
 
 .custom-modal__backdrop {
     position: absolute;
-
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.749);
+    background-color: rgba(0, 0, 0, 0.750);
 }
 .custom-modal__content {
     position: relative;
@@ -27,6 +24,7 @@
     overflow-y: auto;
     background-color: var(--dark-lighter);
     border-radius: 16px;
+    animation: fade-from-top 0.2s ease-out;
 }
 
 .custom-modal__content-header {
@@ -35,25 +33,26 @@
     padding: 0;
     padding-right: 24px;
     padding-top: 16px;
-    
-    
 }
-
 .custom-modal__content-header__btn-close {
-    border: none;
     outline: none;
+    border: none;
     background-color: transparent;
-    color: var(--gray-medium);
 }
 
-@keyframes fade-from-down {
-    0% {
-        opacity: 0;
-        transform: translateY(25px);
-    }
+.custom-modal__content-header__btn-close svg {
+    fill: var(--gray-dark);
+    transition: fill 0.2s ease-out;
+}
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
+.custom-modal__content-header__btn-close:hover svg {
+    fill: var(--gray-medium);
+}
+
+@media (max-width: 576px) {
+    .custom-modal__content {
+      height: 100vh;
+      max-height: 100%;
+      border-radius: 0;
     }
 }

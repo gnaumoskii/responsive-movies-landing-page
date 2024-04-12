@@ -205,8 +205,8 @@ const createFormElement = (movieData) => {
                     />
                 </div>
                 <div class="movie-form__buttons">
-                    <button class="movie-form__buttons__btn-save btn-primary">Save</button>
-                    <button type="button" class="movie-form__buttons__btn-cancel btn-secondary">Cancel</button>
+                    <button class="movie-form__buttons__btn-save custom-btn-primary">Save</button>
+                    <button type="button" class="movie-form__buttons__btn-cancel custom-btn-secondary">Cancel</button>
                 <div>
 
             </form>
