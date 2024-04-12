@@ -1,0 +1,106 @@
+
+.movie-form__container {
+    padding: 32px 48px;
+    width: 576px;
+    padding-top: 0;
+}
+
+.movie-form__container__heading {
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.movie-form__input-group {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+}
+
+.movie-form__input-group__label {
+    color: var(--gray-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    margin-bottom: 2px;
+    
+}
+
+.movie-form__input-group__input {
+    outline: none;
+    border: 0px solid var(--green-dark);
+    padding: 8px;
+
+    border-radius: 4px;
+    background-color: var(--dark);
+    
+    color: white;
+}
+
+.movie-form__input-group__error-message {
+    color: var(--red-light);
+    margin: 0;
+    padding-top: 4px;
+}
+
+.movie-form__input-group__genres {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.movie-form__input-group__input--checkbox {
+    display: none;
+}
+
+.movie-form__input-group__input[type="date"] {
+    color-scheme: dark;
+}
+
+.movie-form__input-group__genre {
+    color: white;
+    background-color: var(--dark);
+    padding: 4px 8px;
+    border-radius: 4px;
+    user-select: none;
+    cursor: pointer;
+    transition: color 0.2s ease-out, background-color 0.2s ease-out, font-weight 0.2s ease-out;
+}
+
+.movie-form__input-group__genre:hover {
+    color: var(--gray-light);
+}
+
+.movie-form__input-group__input--checkbox:checked + .movie-form__input-group__genre {
+    color: white;
+    background-color: var(--green-light);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+textarea.movie-form__input-group__input {
+    min-height: 200px;
+}
+
+
+
+.movie-form__buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
+}
+
+.movie-form__buttons__btn-cancel {
+    margin-left: 12px;
+}
+
+/* Mathcing bootstrap's smallest breakpoint */
+@media (max-width: 576px) {
+    .movie-form__container {
+        padding: 32px 32px;
+        width: 100%;
+        height: 100%;
+    }
+}

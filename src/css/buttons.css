@@ -1,0 +1,78 @@
+.custom-btn-primary,
+.custom-btn-primary--gray {
+    outline: none;
+    color: white;
+    padding: 6px 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 16px;
+    position: relative;
+    border: 2px solid transparent;
+    transition: background-color 0.2s ease-out;
+    font-family: "Montserrat", sans-serif;
+}
+
+.custom-btn-primary {
+    background-color: var(--green-light);
+}
+
+.custom-btn-primary--gray {
+    background-color: var(--gray-dark);
+}
+
+.custom-btn-primary:hover {
+    background-color: var(--green-medium);
+}
+
+.custom-btn-primary--gray:hover {
+    background-color: var(--gray-medium);
+}
+
+.custom-btn-secondary,
+.custom-btn-secondary--danger {
+    outline: none;
+    color: white;
+    padding: 6px 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 16px;
+    position: relative;
+    background-color: transparent;
+    z-index: 0;
+}
+
+.custom-btn-secondary {
+    border: 2px solid var(--gray-dark);
+}
+
+.custom-btn-secondary--danger {
+    border: 2px solid var(--red-medium);
+}
+
+.custom-btn-secondary::before,
+.custom-btn-secondary--danger::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 100%;
+    overflow: hidden;
+    transition: width 0.2s ease-out;
+    z-index: -1;
+    font-family: "Montserrat", sans-serif;
+}
+
+.custom-btn-secondary::before {
+    background-color: var(--gray-dark);
+}
+
+.custom-btn-secondary--danger::before {
+    background-color: var(--red-medium);
+}
+
+.custom-btn-secondary:hover::before,
+.custom-btn-secondary--danger:hover::before {
+    width: 100%;
+    left: 0;
+}

@@ -3,13 +3,16 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Movie Page</title>
+        <title>Movies Page</title>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
             crossorigin="anonymous"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -22,5 +25,124 @@
         ></script>
     </head>
     <body>
+        <main class="movies-page">
+            <section class="quote-container container text-center">
+                <!-- Render a random movie quote. -->
+            </section>
+            <section class="movies container-sm">
+                <div class="movies-options">
+                    <div class="movies-options__buttons">
+                        <button class="movies-options__buttons__btn-add custom-btn-primary">Add New Movie</button>
+                        <button class="movies-options__buttons__btn-filter custom-btn-secondary">
+                            <span>Filters</span>
+                            <svg
+                                fill="#FFF"
+                                height="14px"
+                                width="14px"
+                                version="1.1"
+                                id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 330 330"
+                                xml:space="preserve"
+                            >
+                                <path
+                                    id="XMLID_222_"
+                                    d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001
+                           c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394c-5.857,5.858-5.857,15.355,0.001,21.213
+                           C82.322,328.536,86.161,330,90,330s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606
+                           C255,161.018,253.42,157.202,250.606,154.389z"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                    <form class="movies-options__filters-form">
+                        <div class="movies-options__filters-form__genres">
+                            <h1 class="filters-form__genres__heading">Genres</h1>
+                            <div class="filters-form__genres__input-group">
+                                <input
+                                    class="filters-form__genres__input-group__input--checkbox"
+                                    type="checkbox"
+                                    name="genre-filter--action"
+                                    id="genre-filter--action"
+                                    data-filter-value="ACTION"
+                                />
+                                <label class="filters-form__genres__input-group__label" for="genre-filter--action"> ACTION </label>
+                                <input
+                                    class="filters-form__genres__input-group__input--checkbox"
+                                    type="checkbox"
+                                    name="genre-filter--adventure"
+                                    id="genre-filter--adventure"
+                                    data-filter-value="ADVENTURE"
+                                />
+                                <label class="filters-form__genres__input-group__label" for="genre-filter--adventure"> ADVENTURE </label>
+                                <input
+                                    class="filters-form__genres__input-group__input--checkbox"
+                                    type="checkbox"
+                                    name="genre-filter--animation"
+                                    id="genre-filter--animation"
+                                    data-filter-value="ANIMATION"
+                                />
+                                <label class="filters-form__genres__input-group__label" for="genre-filter--animation"> ANIMATION </label>
+                                <input
+                                    class="filters-form__genres__input-group__input--checkbox"
+                                    type="checkbox"
+                                    name="genre-filter--comedy"
+                                    id="genre-filter--comedy"
+                                    data-filter-value="COMEDY"
+                                />
+                                <label class="filters-form__genres__input-group__label" for="genre-filter--comedy"> COMEDY </label>
+                                <input
+                                    class="filters-form__genres__input-group__input--checkbox"
+                                    type="checkbox"
+                                    name="genre-filter--crime"
+                                    id="genre-filter--crime"
+                                    data-filter-value="CRIME"
+                                />
+                                <label class="filters-form__genres__input-group__label" for="genre-filter--crime"> CRIME </label>
+                                <input
+                                    class="filters-form__genres__input-group__input--checkbox"
+                                    type="checkbox"
+                                    name="genre-filter--drama"
+                                    id="genre-filter--drama"
+                                    data-filter-value="DRAMA"
+                                />
+                                <label class="filters-form__genres__input-group__label" for="genre-filter--drama"> DRAMA </label>
+                                <input
+                                    class="filters-form__genres__input-group__input--checkbox"
+                                    type="checkbox"
+                                    name="genre-filter--fantasy"
+                                    id="genre-filter--fantasy"
+                                    data-filter-value="FANTASY"
+                                />
+                                <label class="filters-form__genres__input-group__label" for="genre-filter--fantasy"> FANTASY </label>
+                                <input
+                                    class="filters-form__genres__input-group__input--checkbox"
+                                    type="checkbox"
+                                    name="genre-filter--horror"
+                                    id="genre-filter--horror"
+                                    data-filter-value="HORROR"
+                                />
+                                <label class="filters-form__genres__input-group__label" for="genre-filter--horror"> HORROR </label>
+                                <input
+                                    class="filters-form__genres__input-group__input--checkbox"
+                                    type="checkbox"
+                                    name="genre-filter--sci-fi"
+                                    id="genre-filter--sci-fi"
+                                    data-filter-value="SCI-FI"
+                                />
+                                <label class="filters-form__genres__input-group__label" for="genre-filter--sci-fi"> SCI-FI </label>
+                            </div>
+                        </div>
+                        <button class="movies-options__filters-form__btn-submit custom-btn-primary--gray">Apply Filters</button>
+                    </form>
+                </div>
+                <ul
+                    class="movies-list row d-flex justify-content-start m-0 p-0 g-4 col-rows-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5"
+                >
+                    <!-- Render movies list. -->
+                </ul>
+            </section>
+        </main>
     </body>
 </html>

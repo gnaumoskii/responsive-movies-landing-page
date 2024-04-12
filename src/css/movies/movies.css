@@ -1,0 +1,202 @@
+@import url("./movie-details.css");
+
+.movies {
+    padding-bottom: 64px;
+    
+}
+
+.movies-list__item {
+    animation: fade-from-top 0.5s ease-out backwards;
+}
+
+.movies-options {
+    padding-left: 16px;
+    border-bottom: 1px solid var(--gray-dark);
+}
+
+.movies-options__buttons {
+    display: flex;
+    margin-bottom: 14px;
+    margin-top: 14px;
+}
+
+.movies-options__buttons__btn-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-left: 12px;
+}
+
+
+
+.movies-options__buttons__btn-filter.expanded {
+    background-color: var(--gray-dark);
+}
+
+.movies-options__buttons__btn-filter svg{
+    transition: transform 0.2s ease-out;
+}
+
+.movies-options__buttons__btn-filter.expanded svg{
+    transform: rotateZ(90deg);
+}
+
+.movies-list__item {
+    height: 320px;
+}
+
+.movie-card {
+    background-color: var(--green-dark);
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--dark2);
+    position: relative;
+    transition: box-shadow 0.2s ease-out;
+}
+
+.movie-card__details {
+    color: white;
+    opacity: 0;
+    position: relative;
+    padding: 8px;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform: translateY(5px);
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+
+}
+
+.movie-card__details__release-date {
+    color: var(--gray-medium);
+    font-size: 14px;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+}
+
+.movie-card__details-info__genre {
+    padding: 0;
+    margin: 0;
+    color: var(--gray-medium);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    top: 150px;
+}
+
+.movie-card__details__title {
+    padding: 0;
+    margin: 0;
+    font-weight: 800;
+    font-size: 20px;
+
+    /* Set max number of lines to show when the title is very long. */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; 
+            line-clamp: 4; 
+    -webkit-box-orient: vertical;
+}
+
+
+.movie-card__poster-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.2s ease-out, filter 0.2s ease-out;
+}
+
+.movie-card__poster {
+    object-fit: cover;
+    width: 100%;
+    transition: width 0.2s ease-out;
+}
+
+.movie-card:hover {
+    /* user-select: none; */
+    cursor: pointer;
+    box-shadow: 0 0 8px 4px var(--dark2);
+}
+
+.movie-card:hover .movie-card__details {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.movie-card:hover .movie-card__poster-container {
+    opacity: 0.25;
+    filter: blur(2px);
+}
+
+.movie-card:hover .movie-card__poster {
+    width: 105%;
+}
+
+/* Change movie card styling for devices that can't hover */
+@media (hover: none) {
+    .movie-card{
+        /* user-select: none; */
+        cursor: pointer;
+        box-shadow: 0 0 8px 0px var(--dark2);
+    }
+
+
+    .movie-card__poster-container::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+       
+    }
+    
+    .movie-card__details {
+            color: white;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text-align: center;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            flex-direction: column;
+            padding-bottom: 32px;
+            opacity: 1;
+            background: linear-gradient(to top, var(--dark2) 20%, transparent);
+            /* background: black; */
+    }
+    
+    .movie-card__poster-container {
+        opacity: 1;
+        filter: none;
+    }
+    
+    .movie-card__poster {
+        width: 105%;
+    }
+}
+
+/* Mathcing bootstrap's smallest breakpoint */
+@media (max-width: 576px) {
+    .movie-card {
+        width: 240px;
+    }
+}

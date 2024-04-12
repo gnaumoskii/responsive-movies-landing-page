@@ -1,0 +1,87 @@
+.movie-details {
+    padding: 16px 32px;
+    padding-bottom: 48px;
+}
+
+.movie-details__content {
+    display: flex;
+    gap: 48px;
+}
+
+.movie-details__content__poster-container {
+    height: 420px;
+    display: flex;
+    max-width: 500px;
+}
+
+.movie-details__content__poster {
+    height: 100%;
+    object-fit: cover;
+    color: white;
+    box-shadow: 0 0 8px 0px var(--dark2);
+}
+
+.movie-details__content__info {
+    max-width: 500px;
+    color: white;
+}
+
+.movie-detials__content__info-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-details__content__info__label {
+    
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.movie-details__content__info__title {
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: 24px;
+}
+
+.movie-details__content__info__description,
+.movie-details__content__info__release-date,
+.movie-details__content__info__genre {
+    color: var(--gray-light);
+}
+
+.movie-details__content__info__description {
+    margin-bottom: 24px;
+}
+
+
+
+.movie-details__content__info__genre {
+    text-transform: capitalize;
+}
+
+.movie-details__content__info__buttons {
+    margin-bottom: 16px;
+    display: flex;
+}
+
+.buttons__btn-delete {
+    margin-left: 12px;
+}
+
+/* Mathcing bootstrap's smallest breakpoint */
+@media (max-width: 576px) {
+    .movie-details__content {
+        display: flex;
+        gap: 48px;
+        flex-direction: column;
+        flex-flow: column-reverse;
+    }
+
+    .movie-detials__content__info-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        gap: 24px;
+    }
+}

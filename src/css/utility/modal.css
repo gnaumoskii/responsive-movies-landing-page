@@ -1,0 +1,59 @@
+.custom-modal {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    animation: fade-in 0.2s ease-out;
+}
+
+.custom-modal__backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.750);
+}
+.custom-modal__content {
+    position: relative;
+    max-height: 95vh;
+    overflow-y: auto;
+    background-color: var(--dark-lighter);
+    border-radius: 16px;
+    animation: fade-from-top 0.2s ease-out;
+}
+
+.custom-modal__content-header {
+    display: flex;
+    justify-content: end;
+    padding: 0;
+    padding-right: 24px;
+    padding-top: 16px;
+}
+.custom-modal__content-header__btn-close {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.custom-modal__content-header__btn-close svg {
+    fill: var(--gray-dark);
+    transition: fill 0.2s ease-out;
+}
+
+.custom-modal__content-header__btn-close:hover svg {
+    fill: var(--gray-medium);
+}
+
+/* Mathcing bootstrap's smallest breakpoint */
+@media (max-width: 576px) {
+    .custom-modal__content {
+      height: 100vh;
+      max-height: 100%;
+      border-radius: 0;
+    }
+}

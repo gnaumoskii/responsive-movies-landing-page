@@ -1,0 +1,25 @@
+@import url("./variables.css");
+@import url("./animations.css");
+@import url("./buttons.css");
+@import url("./movies/movie-filters");
+
+body {
+    background-color: var(--dark);
+    font-family: "Montserrat", sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dark-lighter2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-dark);
+}
