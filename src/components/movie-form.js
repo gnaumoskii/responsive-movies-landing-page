@@ -1,31 +1,18 @@
 import { closeModal, createModal } from "./utility/modal";
 import "../css/movies/movie-form.css";
 import { movies, renderMoviesComponent, openMovieDetailsModal } from "./movies";
-export const createMovieFormElement = () => {};
 
 export const openAddMovieModal = () => {
     const addFormContainer = createFormElement();
     const addForm = $(addFormContainer).find(".movie-form")[0];
     const cancelButton = $(addFormContainer).find(".movie-form__buttons__btn-cancel")[0];
 
-    $(addForm).find('#movie-title').on("input", () => {
-        $('#movie-title + .movie-form__input-group__error-message').remove()
-    });
-
-    $(addForm).find('#movie-description').on("input", () => {
-        $('#movie-description + .movie-form__input-group__error-message').remove()
-    });
-
-    $(addForm).find('#movie-release-date').on("input", () => {
-        $('#movie-release-date + .movie-form__input-group__error-message').remove()
-    });
-
+    errorMessagesHandler(addForm);
 
     $(addForm).on("submit", addFormSubmitHandler);
     $(cancelButton).on("click", () => {
         closeModal();
     });
-
 
     // Close all previous modals before opening the edit form modal.
     closeModal();
@@ -39,6 +26,9 @@ export const openEditMovieModal = (movie) => {
     const editFormContainer = createFormElement(movie);
     const editForm = $(editFormContainer).find(".movie-form")[0];
     const cancelButton = $(editFormContainer).find(".movie-form__buttons__btn-cancel")[0];
+
+    // Clears error messages on input
+    errorMessagesHandler(editForm);
 
     $(editForm).on("submit", (e) => editFormSubmitHandler(e, movie.id));
     $(cancelButton).on("click", () => {
@@ -54,6 +44,20 @@ export const openEditMovieModal = (movie) => {
     $(".movies-page").append(editModal);
 };
 
+const errorMessagesHandler = (form) => {
+    $(form).find("#movie-title").on("input", () => {
+        $("#movie-title + .movie-form__input-group__error-message").remove();
+    });
+
+    $(form).find("#movie-description").on("input", () => {
+        $("#movie-description + .movie-form__input-group__error-message").remove();
+    });
+
+    $(form).find("#movie-release-date").on("input", () => {
+        $("#movie-release-date + .movie-form__input-group__error-message").remove();
+    });
+};
+
 const createFormElement = (movieData) => {
     return $(`
     <div class="movie-form__container">
@@ -61,129 +65,144 @@ const createFormElement = (movieData) => {
             <form class="movie-form">
                 <div class="movie-form__input-group">
                     <label class="movie-form__input-group__label" for="movie-title">Title</label>
-                    <input class="movie-form__input-group__input" type="text" id="movie-title" name="movie-title" value="${movieData ? movieData.title : ""}"/>
+                    <input 
+                        class="movie-form__input-group__input" 
+                        type="text" 
+                        id="movie-title" 
+                        name="movie-title" 
+                        value="${movieData ? movieData.title : ""}" 
+                        autocomplete="off"
+                    />
                 </div>
                 <div class="movie-form__input-group">
                     <label class="movie-form__input-group__label" for="movie-description">Description</label>
-                    <textarea class="movie-form__input-group__input" type="text" id="movie-description" name="movie-description">${
+                    <textarea class="movie-form__input-group__input" type="text" id="movie-description" name="movie-description" autocomplete="off">${
                         movieData ? movieData.description : ""
                     }</textarea>
                 </div>
                 <div class="movie-form__input-group">
                     <label class="movie-form__input-group__label" for="movie-release-date">Release Date</label>
-                    <input class="movie-form__input-group__input" type="date" id="movie-release-date" name="movie-release-date" value="${
-                        movieData ? movieData.releaseDate : ""
-                    }"/>
+                    <input 
+                        class="movie-form__input-group__input" 
+                        type="date" 
+                        id="movie-release-date" 
+                        name="movie-release-date" 
+                        value="${movieData ? movieData.releaseDate : ""}"
+                    />
                 </div>
                 <div>
                     <label class="movie-form__input-group__label">Genre</label>
                     <div class="movie-form__input-group__genres">
+                        <input 
+                            class="movie-form__input-group__input--checkbox" 
+                            ${movieData && movieData.genre.includes("ACTION") ? "checked" : ""} 
+                            type="checkbox" 
+                            name="movie-genre--action" 
+                            id="movie-genre--action" 
+                            data-value="ACTION"
+                        />
                         <label class="movie-form__input-group__genre" for="movie-genre--action">
-                            <input 
-                                class="movie-form__input-group__input--checkbox" 
-                                ${movieData && movieData.genre.includes("ACTION") ? "checked" : ""} 
-                                type="checkbox" 
-                                name="movie-genre--action" 
-                                id="movie-genre--action" 
-                                data-value="ACTION"
-                            />
                             ACTION
                         </label>
+                        <input 
+                            class="movie-form__input-group__input--checkbox" 
+                            ${movieData && movieData.genre.includes("ADVENTURE") ? "checked" : ""} 
+                            type="checkbox" 
+                            name="movie-genre--adventure" 
+                            id="movie-genre--adventure" 
+                            data-value="ADVENTURE"
+                        />
                         <label class="movie-form__input-group__genre" for="movie-genre--adventure">
-                            <input 
-                                class="movie-form__input-group__input--checkbox" 
-                                ${movieData && movieData.genre.includes("ADVENTURE") ? "checked" : ""} 
-                                type="checkbox" 
-                                name="movie-genre--adventure" 
-                                id="movie-genre--adventure" 
-                                data-value="ADVENTURE"
-                            />
                             ADVENTURE
                         </label>
+                        <input 
+                            class="movie-form__input-group__input--checkbox" 
+                            ${movieData && movieData.genre.includes("ANIMATION") ? "checked" : ""} 
+                            type="checkbox" 
+                            name="movie-genre--animation" 
+                            id="movie-genre--animation" 
+                            data-value="ANIMATION"
+                        />
                         <label class="movie-form__input-group__genre" for="movie-genre--animation">
-                            <input 
-                                class="movie-form__input-group__input--checkbox" 
-                                ${movieData && movieData.genre.includes("ANIMATION") ? "checked" : ""} 
-                                type="checkbox" 
-                                name="movie-genre--animation" 
-                                id="movie-genre--animation" 
-                                data-value="ANIMATION"
-                            />
                             ANIMATION
                         </label>
+                        <input 
+                            class="movie-form__input-group__input--checkbox" 
+                            ${movieData && movieData.genre.includes("COMEDY") ? "checked" : ""} 
+                            type="checkbox" 
+                            name="movie-genre--comedy" 
+                            id="movie-genre--comedy" 
+                            data-value="COMEDY"
+                        />
                         <label class="movie-form__input-group__genre" for="movie-genre--comedy">
-                            <input 
-                                class="movie-form__input-group__input--checkbox" 
-                                ${movieData && movieData.genre.includes("COMEDY") ? "checked" : ""} 
-                                type="checkbox" 
-                                name="movie-genre--comedy" 
-                                id="movie-genre--comedy" 
-                                data-value="COMEDY"
-                            />
                             COMEDY
                         </label>
+                        <input 
+                            class="movie-form__input-group__input--checkbox" 
+                            ${movieData && movieData.genre.includes("CRIME") ? "checked" : ""} 
+                            type="checkbox" 
+                            name="movie-genre--crime" 
+                            id="movie-genre--crime" 
+                            data-value="CRIME"
+                        />
                         <label class="movie-form__input-group__genre" for="movie-genre--crime">
-                            <input 
-                                class="movie-form__input-group__input--checkbox" 
-                                ${movieData && movieData.genre.includes("CRIME") ? "checked" : ""} 
-                                type="checkbox" 
-                                name="movie-genre--crime" 
-                                id="movie-genre--crime" 
-                                data-value="CRIME"
-                            />
                             CRIME
                         </label>
+                        <input 
+                            class="movie-form__input-group__input--checkbox" 
+                            ${movieData && movieData.genre.includes("DRAMA") ? "checked" : ""} 
+                            type="checkbox" 
+                            name="movie-genre--drama" 
+                            id="movie-genre--drama" 
+                            data-value="DRAMA"
+                        />
                         <label class="movie-form__input-group__genre" for="movie-genre--drama">
-                            <input 
-                                class="movie-form__input-group__input--checkbox" 
-                                ${movieData && movieData.genre.includes("DRAMA") ? "checked" : ""} 
-                                type="checkbox" 
-                                name="movie-genre--drama" 
-                                id="movie-genre--drama" 
-                                data-value="DRAMA"
-                            />
                             DRAMA
                         </label>
+                        <input 
+                            class="movie-form__input-group__input--checkbox" 
+                            ${movieData && movieData.genre.includes("FANTASY") ? "checked" : ""} 
+                            type="checkbox" 
+                            name="movie-genre--fantasy" 
+                            id="movie-genre--fantasy" 
+                            data-value="FANTASY"
+                        />
                         <label class="movie-form__input-group__genre" for="movie-genre--fantasy">
-                            <input 
-                                class="movie-form__input-group__input--checkbox" 
-                                ${movieData && movieData.genre.includes("FANTASY") ? "checked" : ""} 
-                                type="checkbox" 
-                                name="movie-genre--fantasy" 
-                                id="movie-genre--fantasy" 
-                                data-value="FANTASY"
-                            />
                             FANTASY
                         </label>
+                        <input 
+                            class="movie-form__input-group__input--checkbox" 
+                            ${movieData && movieData.genre.includes("HORROR") ? "checked" : ""} 
+                            type="checkbox" 
+                            name="movie-genre--horror" 
+                            id="movie-genre--horror" 
+                            data-value="HORROR"
+                        />
                         <label class="movie-form__input-group__genre" for="movie-genre--horror">
-                            <input 
-                                class="movie-form__input-group__input--checkbox" 
-                                ${movieData && movieData.genre.includes("HORROR") ? "checked" : ""} 
-                                type="checkbox" 
-                                name="movie-genre--horror" 
-                                id="movie-genre--horror" 
-                                data-value="HORROR"
-                            />
                             HORROR
                         </label>
+                        <input 
+                            class="movie-form__input-group__input--checkbox" 
+                            ${movieData && movieData.genre.includes("SCI-FI") ? "checked" : ""} 
+                            type="checkbox" 
+                            name="movie-genre--sci-fi" 
+                            id="movie-genre--sci-fi" 
+                            data-value="SCI-FI"
+                        />
                         <label class="movie-form__input-group__genre" for="movie-genre--sci-fi">
-                            <input 
-                                class="movie-form__input-group__input--checkbox" 
-                                ${movieData && movieData.genre.includes("SCI-FI") ? "checked" : ""} 
-                                type="checkbox" 
-                                name="movie-genre--sci-fi" 
-                                id="movie-genre--sci-fi" 
-                                data-value="SCI-FI"
-                            />
                             SCI-FI
                         </label>
                     </div>
                 </div>
                 <div class="movie-form__input-group">
                     <label class="movie-form__input-group__label" for="movie-poster">Poster</label>
-                    <input class="movie-form__input-group__input" type="text" id="movie-poster" name="movie-poster" value="${
-                        movieData ? movieData.poster : ""
-                    }"/>
+                    <input 
+                        class="movie-form__input-group__input" 
+                        type="text" id="movie-poster" 
+                        name="movie-poster" 
+                        value="${movieData ? movieData.poster : ""}" 
+                        autocomplete="off"
+                    />
                 </div>
                 <div class="movie-form__buttons">
                     <button class="movie-form__buttons__btn-save btn-primary">Save</button>
@@ -195,30 +214,29 @@ const createFormElement = (movieData) => {
     `)[0];
 };
 
-const validateForm = ( title, description, releaseDate ) => {
+const validateForm = (title, description, releaseDate) => {
     // Remove all existing error messages before validating form.
-    $('.movie-form__input-group__error-message').remove();
+    $(".movie-form__input-group__error-message").remove();
     let isValid = true;
-    if(title.trim().length > 250) {
+    if (title.trim().length > 250) {
         $("#movie-title").after('<p class="movie-form__input-group__error-message">Movie title can\' exceed 250 characters.</p>');
         isValid = false;
-    } else if(title.trim().length === 0) {
+    } else if (title.trim().length === 0) {
         $("#movie-title").after('<p class="movie-form__input-group__error-message">Movie title cannot be empty.</p>');
         isValid = false;
     }
 
-
-    if(description.trim().length > 500) {
-        $("#movie-description").after('<p class="movie-form__input-group__error-message">Description can\'t exceed 500 characters.</p>')
+    if (description.trim().length > 500) {
+        $("#movie-description").after('<p class="movie-form__input-group__error-message">Description can\'t exceed 500 characters.</p>');
         isValid = false;
-    } else if(description.trim().length === 0) {
-        $("#movie-description").after('<p class="movie-form__input-group__error-message">Description cannot be empty.</p>')
+    } else if (description.trim().length === 0) {
+        $("#movie-description").after('<p class="movie-form__input-group__error-message">Description cannot be empty.</p>');
         isValid = false;
     }
 
     var datePattern = /^\d{4}-\d{2}-\d{2}$/;
-    if(releaseDate.match(datePattern) === null) {
-        $("#movie-release-date").after('<p class="movie-form__input-group__error-message">Invalid date.</p>')
+    if (releaseDate.match(datePattern) === null) {
+        $("#movie-release-date").after('<p class="movie-form__input-group__error-message">Invalid date.</p>');
         isValid = false;
     }
     return isValid;
@@ -253,7 +271,6 @@ const editFormSubmitHandler = (event, movieId) => {
     event.preventDefault();
     const form = $(".movie-form")[0];
     const { title, description, releaseDate, poster, genre } = getMovieFormData(form);
-
 
     const formIsValid = validateForm(title, description, releaseDate);
     if (!formIsValid) {

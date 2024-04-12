@@ -68,7 +68,7 @@
     transition: color 0.2s ease-out, background-color 0.2s ease-out, font-weight 0.2s ease-out;
 }
 
-.movie-form__input-group__genre:has(.movie-form__input-group__input--checkbox:checked) {
+.movie-form__input-group__input--checkbox:checked + .movie-form__input-group__genre {
     color: white;
     background-color: var(--green-light);
     padding: 4px 8px;
