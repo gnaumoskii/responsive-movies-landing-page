@@ -7,7 +7,6 @@ import { movies, saveMoviesData } from "../data/data";
 
 export const appliedFilters = {
     genres: [],
-    // Other filters could be applied.
 };
 
 $(document).ready(() => {
@@ -19,32 +18,32 @@ $(document).ready(() => {
 });
 
 export const renderMoviesComponent = () => {
+    // Show movies with the applied filters
     const filteredMovies = filterMovies();
     renderMoviesList(filteredMovies);
-    
 };
 
 const renderMoviesList = (movies) => {
     $("ul.movies-list").html("");
     $.each(movies, (index, movie) => {
-        const movieCard = createMovieCard(movie);
-        movieCard.css('animation-delay', `${index/20}s`);
-        $(movieCard).on("click", () => openMovieDetailsModal(movie));
-        $("ul.movies-list").append(movieCard);
+        const movieCardElement = createMovieCardElement(movie);
+        movieCardElement.css('animation-delay', `${index/20}s`);
+        $(movieCardElement).on("click", () => openMovieDetailsModal(movie));
+        $("ul.movies-list").append(movieCardElement);
     });
 };
 
-const createMovieCard = (movie) => {
+const createMovieCardElement = (movie) => {
     return $(`
-        <li class="movies-list__item col-12 px-5 px-sm-3 d-flex justify-content-center">
-            <div class="movie-card">
-                <div class="movie-card__poster-container"><img class="movie-card__poster" src="${movie.poster || "#"}"/></div>
-                <div class="movie-card__details">
-                    <p class="movie-card__details__title">${movie.title}</p>
-                    <p class="movie-card__details__release-date">${new Date(movie.releaseDate).getFullYear()}</p>
-                </div>
+    <li class="movies-list__item col-12 px-5 px-sm-3 d-flex justify-content-center">
+        <div class="movie-card">
+            <div class="movie-card__poster-container"><img class="movie-card__poster" src="${movie.poster || "#"}"/></div>
+            <div class="movie-card__details">
+                <p class="movie-card__details__title">${movie.title}</p>
+                <p class="movie-card__details__release-date">${new Date(movie.releaseDate).getFullYear()}</p>
             </div>
-        </li>`);
+        </div>
+    </li>`);
 };
 
 export const openMovieDetailsModal = (movie) => {
@@ -99,6 +98,7 @@ const deleteMovie = (id) => {
     // Re-rendering the movie list after removing the movie.
     renderMoviesList(updatedMovies);
     closeModal();
+    window.scrollTo(0,0);
 };
 
 const editMovie = (movie) => {
@@ -124,7 +124,6 @@ const applyFiltersHandler = (event) => {
     event.preventDefault();
 
     const form = $(".movies-options__filters-form")[0];
-
     const genres = $(form).find(".filters-form__genres__input-group__input--checkbox");
     const selectedGenres = [];
     for (const genre of genres) {

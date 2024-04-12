@@ -17,6 +17,7 @@
 .movies-options__buttons {
     display: flex;
     margin-bottom: 14px;
+    margin-top: 14px;
 }
 
 .movies-options__buttons__btn-filter {
@@ -99,7 +100,7 @@
     margin: 0;
     font-weight: 800;
     font-size: 20px;
-    
+
     /* Set max number of lines to show when the title is very long. */
     overflow: hidden;
     display: -webkit-box;
@@ -147,6 +148,7 @@
     width: 105%;
 }
 
+/* Change movie card styling for devices that can't hover */
 @media (hover: none) {
     .movie-card{
         /* user-select: none; */
@@ -192,6 +194,7 @@
     }
 }
 
+/* Mathcing bootstrap's smallest breakpoint */
 @media (max-width: 576px) {
     .movie-card {
         width: 240px;

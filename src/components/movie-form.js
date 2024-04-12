@@ -8,17 +8,13 @@ export const openAddMovieModal = () => {
     const addForm = $(addFormContainer).find(".movie-form")[0];
     const cancelButton = $(addFormContainer).find(".movie-form__buttons__btn-cancel")[0];
 
-    errorMessagesHandler(addForm);
-
+    addErrorMessagesHandler(addForm);
     $(addForm).on("submit", addFormSubmitHandler);
     $(cancelButton).on("click", () => {
         closeModal();
     });
 
-    // Close all previous modals before opening the edit form modal.
-    closeModal();
-
-    // Create the edit modal and append it to the page component.
+    closeModal(); // Close all previous modals before opening the edit form modal
     const addModal = createModal(addFormContainer);
     $(".movies-page").append(addModal);
 };
@@ -27,35 +23,38 @@ export const openEditMovieModal = (movie) => {
     const editFormContainer = createFormElement(movie);
     const editForm = $(editFormContainer).find(".movie-form")[0];
     const cancelButton = $(editFormContainer).find(".movie-form__buttons__btn-cancel")[0];
-
-    // Clears error messages on input
-    errorMessagesHandler(editForm);
-
     $(editForm).on("submit", (e) => editFormSubmitHandler(e, movie.id));
     $(cancelButton).on("click", () => {
         closeModal();
         openMovieDetailsModal(movie);
     });
 
-    // Close all previous modals before opening the edit form modal.
-    closeModal();
+    addErrorMessagesHandler(editForm); // Added error handling
+    closeModal(); // Close all previous modals before opening the edit form modal
 
-    // Create the edit modal and append it to the page component.
     const editModal = createModal(editFormContainer);
     $(".movies-page").append(editModal);
 };
 
-const errorMessagesHandler = (form) => {
+const addErrorMessagesHandler = (form) => {
+    // Clear the existing error messages on input change
     $(form).find("#movie-title").on("input", () => {
-        $("#movie-title + .movie-form__input-group__error-message").remove();
+        if($("#movie-title + .movie-form__input-group__error-message").length) {
+            $("#movie-title + .movie-form__input-group__error-message").remove();
+        }
     });
 
     $(form).find("#movie-description").on("input", () => {
-        $("#movie-description + .movie-form__input-group__error-message").remove();
+        if($("#movie-description + .movie-form__input-group__error-message").length) {
+            $("#movie-description + .movie-form__input-group__error-message").remove();
+            
+        }
     });
 
     $(form).find("#movie-release-date").on("input", () => {
-        $("#movie-release-date + .movie-form__input-group__error-message").remove();
+        if($("#movie-release-date + .movie-form__input-group__error-message").length) {
+            $("#movie-release-date + .movie-form__input-group__error-message").remove();
+        }
     });
 };
 
@@ -216,7 +215,7 @@ const createFormElement = (movieData) => {
 };
 
 const validateForm = (title, description, releaseDate) => {
-    // Remove all existing error messages before validating form.
+    // Remove all existing error messages before validating the form
     $(".movie-form__input-group__error-message").remove();
     let isValid = true;
     if (title.trim().length > 250) {
@@ -283,7 +282,6 @@ const editFormSubmitHandler = (event, movieId) => {
     movie.releaseDate = releaseDate;
     movie.genre = genre;
     movie.poster = poster;
-
     saveMoviesData(movies);
     closeModal();
     openMovieDetailsModal(movie);
@@ -298,7 +296,7 @@ const getMovieFormData = (form) => {
     const poster = form.elements["movie-poster"].value;
 
     const selectedGenres = [];
-    // Loops through all genre checkboxes and adds the selected genres to the array.
+    // Loops through all genre checkboxes and adds only the selected genres to the array
     for (let genre of genres) {
         if (genre.checked === true) {
             selectedGenres.push(genre.dataset.value);

@@ -49,6 +49,7 @@
     fill: var(--gray-medium);
 }
 
+/* Mathcing bootstrap's smallest breakpoint */
 @media (max-width: 576px) {
     .custom-modal__content {
       height: 100vh;

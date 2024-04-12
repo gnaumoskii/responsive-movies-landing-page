@@ -17,7 +17,7 @@ export const renderQuoteComponent = async () => {
     } catch (error) {
         $(".quote-container").html(
             `
-                <p class="quote-container__error-message">Oops! An error occured while fetching the quote.</p>
+                <p class="quote-container__error-message">Oops! An error occured while fetching the movie quote.</p>
             `
         );
     }

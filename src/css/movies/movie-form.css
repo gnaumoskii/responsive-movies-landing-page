@@ -96,6 +96,7 @@ textarea.movie-form__input-group__input {
     margin-left: 12px;
 }
 
+/* Mathcing bootstrap's smallest breakpoint */
 @media (max-width: 576px) {
     .movie-form__container {
         padding: 32px 32px;
