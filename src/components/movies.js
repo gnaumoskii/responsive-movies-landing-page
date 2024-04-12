@@ -1,12 +1,13 @@
 import "../css/movies/movies.css";
-import moviesData from "../data/movies.json";
+
 import { openEditMovieModal, openAddMovieModal } from "./movie-form";
 import { closeModal, createModal } from "./utility/modal";
+import { movies, saveMoviesData } from "../data/data";
 
-// Global Movies State
-export let { movies } = moviesData;
+
 export const appliedFilters = {
     genres: [],
+    // Other filters could be applied.
 };
 
 $(document).ready(() => {
@@ -39,10 +40,8 @@ const createMovieCard = (movie) => {
             <div class="movie-card">
                 <div class="movie-card__poster-container"><img class="movie-card__poster" src="${movie.poster || "#"}"/></div>
                 <div class="movie-card__details">
-                <p class="movie-card__details__title">${movie.title}</p>
-                    <div class="movie-card__details-info">
-                        <p class="movie-card__details-info__release-date">${new Date(movie.releaseDate).getFullYear()}</p>
-                    </div>
+                    <p class="movie-card__details__title">${movie.title}</p>
+                    <p class="movie-card__details__release-date">${new Date(movie.releaseDate).getFullYear()}</p>
                 </div>
             </div>
         </li>`);
@@ -95,9 +94,10 @@ const createMovieDetailsElement = (movie) => {
 };
 
 const deleteMovie = (id) => {
-    movies = movies.filter((movie) => movie.id !== id);
+    const updatedMovies = movies.filter((movie) => movie.id !== id);
+    saveMoviesData(updatedMovies);
     // Re-rendering the movie list after removing the movie.
-    renderMoviesList(movies);
+    renderMoviesList(updatedMovies);
     closeModal();
 };
 

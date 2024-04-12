@@ -73,16 +73,10 @@
 
 }
 
-.movie-card__details-info {
-   color: var(--gray-medium);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.movie-card__details__release-date {
+    color: var(--gray-medium);
     font-size: 14px;
     font-weight: 400;
-}
-
-.movie-card__details-info__release-date {
     padding: 0;
     margin: 0;
 }
@@ -105,6 +99,13 @@
     margin: 0;
     font-weight: 800;
     font-size: 20px;
+    
+    /* Set max number of lines to show when the title is very long. */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; 
+            line-clamp: 4; 
+    -webkit-box-orient: vertical;
 }
 
 

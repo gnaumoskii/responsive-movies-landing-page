@@ -1,6 +1,7 @@
 import { closeModal, createModal } from "./utility/modal";
 import "../css/movies/movie-form.css";
-import { movies, renderMoviesComponent, openMovieDetailsModal } from "./movies";
+import { renderMoviesComponent, openMovieDetailsModal } from "./movies";
+import { movies, saveMoviesData } from "../data/data";
 
 export const openAddMovieModal = () => {
     const addFormContainer = createFormElement();
@@ -261,8 +262,8 @@ const addFormSubmitHandler = (event) => {
         genre,
         poster,
     };
-
     movies.push(newMovie);
+    saveMoviesData(movies);
     closeModal();
     renderMoviesComponent();
 };
@@ -283,9 +284,10 @@ const editFormSubmitHandler = (event, movieId) => {
     movie.genre = genre;
     movie.poster = poster;
 
-    renderMoviesComponent();
+    saveMoviesData(movies);
     closeModal();
     openMovieDetailsModal(movie);
+    renderMoviesComponent();
 };
 
 const getMovieFormData = (form) => {
