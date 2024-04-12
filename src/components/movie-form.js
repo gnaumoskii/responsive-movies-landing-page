@@ -2,15 +2,30 @@ import { closeModal, createModal } from "./utility/modal";
 import "../css/movies/movie-form.css";
 import { movies, renderMoviesComponent, openMovieDetailsModal } from "./movies";
 export const createMovieFormElement = () => {};
+
 export const openAddMovieModal = () => {
     const addFormContainer = createFormElement();
     const addForm = $(addFormContainer).find(".movie-form")[0];
     const cancelButton = $(addFormContainer).find(".movie-form__buttons__btn-cancel")[0];
 
+    $(addForm).find('#movie-title').on("input", () => {
+        $('#movie-title + .movie-form__input-group__error-message').remove()
+    });
+
+    $(addForm).find('#movie-description').on("input", () => {
+        $('#movie-description + .movie-form__input-group__error-message').remove()
+    });
+
+    $(addForm).find('#movie-release-date').on("input", () => {
+        $('#movie-release-date + .movie-form__input-group__error-message').remove()
+    });
+
+
     $(addForm).on("submit", addFormSubmitHandler);
     $(cancelButton).on("click", () => {
         closeModal();
     });
+
 
     // Close all previous modals before opening the edit form modal.
     closeModal();
@@ -56,7 +71,9 @@ const createFormElement = (movieData) => {
                 </div>
                 <div class="movie-form__input-group">
                     <label class="movie-form__input-group__label" for="movie-release-date">Release Date</label>
-                    <input class="movie-form__input-group__input" type="date" id="movie-release-date" name="movie-release-date" value="${movieData ? movieData.releaseDate : ""}"/>
+                    <input class="movie-form__input-group__input" type="date" id="movie-release-date" name="movie-release-date" value="${
+                        movieData ? movieData.releaseDate : ""
+                    }"/>
                 </div>
                 <div>
                     <label class="movie-form__input-group__label">Genre</label>
@@ -171,7 +188,6 @@ const createFormElement = (movieData) => {
                 <div class="movie-form__buttons">
                     <button class="movie-form__buttons__btn-save btn-primary">Save</button>
                     <button type="button" class="movie-form__buttons__btn-cancel btn-secondary">Cancel</button>
-                    
                 <div>
 
             </form>
@@ -179,33 +195,54 @@ const createFormElement = (movieData) => {
     `)[0];
 };
 
-const validateForm = (form) => {
-    // Add form validation...
-    return true;
+const validateForm = ( title, description, releaseDate ) => {
+    // Remove all existing error messages before validating form.
+    $('.movie-form__input-group__error-message').remove();
+    let isValid = true;
+    if(title.trim().length > 250) {
+        $("#movie-title").after('<p class="movie-form__input-group__error-message">Movie title can\' exceed 250 characters.</p>');
+        isValid = false;
+    } else if(title.trim().length === 0) {
+        $("#movie-title").after('<p class="movie-form__input-group__error-message">Movie title cannot be empty.</p>');
+        isValid = false;
+    }
+
+
+    if(description.trim().length > 500) {
+        $("#movie-description").after('<p class="movie-form__input-group__error-message">Description can\'t exceed 500 characters.</p>')
+        isValid = false;
+    } else if(description.trim().length === 0) {
+        $("#movie-description").after('<p class="movie-form__input-group__error-message">Description cannot be empty.</p>')
+        isValid = false;
+    }
+
+    var datePattern = /^\d{4}-\d{2}-\d{2}$/;
+    if(releaseDate.match(datePattern) === null) {
+        $("#movie-release-date").after('<p class="movie-form__input-group__error-message">Invalid date.</p>')
+        isValid = false;
+    }
+    return isValid;
 };
 
 const addFormSubmitHandler = (event) => {
     event.preventDefault();
 
-    const form = event.target;
-    const title = form.elements["movie-title"].value;
-    const description = form.elements["movie-description"].value;
-    const releaseDate = form.elements["movie-release-date"].value;
-    const genres = $(form).find(".movie-form__input-group__input--checkbox");
+    const form = $(".movie-form")[0];
+    const { title, description, releaseDate, poster, genre } = getMovieFormData(form);
 
-    const selectedGenres = [];
-    // Loops through all genre checkboxes and adds the selected genres to the array.
-    for (let genre of genres) {
-        if (genre.checked === true) {
-            selectedGenres.push(genre.dataset.value);
-        }
-    }
-
-    const poster = form.elements["movie-poster"].value;
-    const newMovie = { id: movies.length.toString(), title, releaseDate, description, genre: selectedGenres, poster };
-    const formIsValid = validateForm();
+    const formIsValid = validateForm(title, description, releaseDate);
     if (!formIsValid) {
+        return;
     }
+
+    const newMovie = {
+        id: movies.length.toString(),
+        title,
+        releaseDate,
+        description,
+        genre,
+        poster,
+    };
 
     movies.push(newMovie);
     closeModal();
@@ -214,12 +251,32 @@ const addFormSubmitHandler = (event) => {
 
 const editFormSubmitHandler = (event, movieId) => {
     event.preventDefault();
+    const form = $(".movie-form")[0];
+    const { title, description, releaseDate, poster, genre } = getMovieFormData(form);
 
-    const form = event.target;
+
+    const formIsValid = validateForm(title, description, releaseDate);
+    if (!formIsValid) {
+        return;
+    }
+    const movie = movies.find((movie) => movie.id === movieId);
+    movie.title = title;
+    movie.description = description;
+    movie.releaseDate = releaseDate;
+    movie.genre = genre;
+    movie.poster = poster;
+
+    renderMoviesComponent();
+    closeModal();
+    openMovieDetailsModal(movie);
+};
+
+const getMovieFormData = (form) => {
     const title = form.elements["movie-title"].value;
     const description = form.elements["movie-description"].value;
     const releaseDate = form.elements["movie-release-date"].value;
     const genres = $(form).find(".movie-form__input-group__input--checkbox");
+    const poster = form.elements["movie-poster"].value;
 
     const selectedGenres = [];
     // Loops through all genre checkboxes and adds the selected genres to the array.
@@ -229,19 +286,13 @@ const editFormSubmitHandler = (event, movieId) => {
         }
     }
 
-    const poster = form.elements["movie-poster"].value;
-    const movie = movies.find((movie) => movie.id === movieId);
-    const formIsValid = validateForm();
+    const movieFormData = {
+        title,
+        description,
+        releaseDate,
+        genre: selectedGenres,
+        poster,
+    };
 
-    if (!formIsValid) {
-    }
-    movie.title = title;
-    movie.description = description;
-    movie.releaseDate = releaseDate;
-    movie.genre = selectedGenres;
-    movie.poster = poster;
-
-    renderMoviesComponent();
-    closeModal();
-    openMovieDetailsModal(movie);
+    return movieFormData;
 };

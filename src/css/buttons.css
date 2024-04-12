@@ -45,7 +45,7 @@
 }
 
 .btn-secondary--danger {
-    border: 2px solid var(--red-light);
+    border: 2px solid var(--red-medium);
 }
 
 .btn-secondary::before,
@@ -66,7 +66,7 @@
 }
 
 .btn-secondary--danger::before {
-    background-color: var(--red-light);
+    background-color: var(--red-medium);
 }
 
 .btn-secondary:hover::before,

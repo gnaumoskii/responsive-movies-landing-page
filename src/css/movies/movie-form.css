@@ -8,6 +8,7 @@
 .movie-form__container__heading {
     color: white;
     font-weight: bold;
+    font-size: 28px;
 }
 
 .movie-form__input-group {
@@ -34,6 +35,12 @@
     background-color: var(--dark);
     
     color: white;
+}
+
+.movie-form__input-group__error-message {
+    color: var(--red-light);
+    margin: 0;
+    padding-top: 4px;
 }
 
 .movie-form__input-group__genres {
