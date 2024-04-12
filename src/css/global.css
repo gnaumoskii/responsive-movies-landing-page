@@ -23,3 +23,15 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--gray-dark);
 }
+
+.footer {
+    text-align: center;
+    padding: 16px 0;
+    background-color: var(--dark2)
+}
+
+.footer__text {
+    color: var(--gray-medium);
+    margin: 0;
+    font-size: 14px;
+}

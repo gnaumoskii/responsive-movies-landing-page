@@ -43,7 +43,7 @@ const createMovieCardElement = (movie) => {
     return $(`
     <li class="movies-list__item col-12 px-5 px-sm-3 d-flex justify-content-center">
         <div class="movie-card">
-            <div class="movie-card__poster-container"><img class="movie-card__poster" src="${movie.poster || "#"}"/></div>
+            <div class="movie-card__poster-container"><img class="movie-card__poster" src="${movie.poster || "#"}" alt="${movie.title}"/></div>
             <div class="movie-card__details">
                 <p class="movie-card__details__title">${movie.title}</p>
                 <p class="movie-card__details__release-date">${new Date(movie.releaseDate).getFullYear()}</p>
