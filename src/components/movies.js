@@ -102,7 +102,7 @@ const deleteMovie = (id) => {
     const updatedMovies = movies.filter((movie) => movie.id !== id);
     saveMoviesData(updatedMovies);
     // Re-rendering the movie list after removing the movie.
-    renderMoviesList(updatedMovies);
+    renderMoviesComponent();
     closeModal();
     window.scrollTo(0,0);
 };
@@ -138,8 +138,7 @@ const applyFiltersHandler = (event) => {
         }
     }
     appliedFilters.genres = [...selectedGenres];
-    const filteredMovies = filterMovies();
-    renderMoviesList(filteredMovies);
+    renderMoviesComponent();
 };
 
 const filterMovies = () => {
