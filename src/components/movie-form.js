@@ -261,7 +261,7 @@ const addFormSubmitHandler = (event) => {
         genre,
         poster,
     };
-    movies.push(newMovie);
+    movies.unshift(newMovie);
     saveMoviesData(movies);
     closeModal();
     renderMoviesComponent();
