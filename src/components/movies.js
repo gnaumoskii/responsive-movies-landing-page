@@ -99,9 +99,12 @@ const createMovieDetailsElement = (movie) => {
 };
 
 const deleteMovie = (id) => {
+    const deletedMovie = movies.find(movie => movie.id === id);
     const updatedMovies = movies.filter((movie) => movie.id !== id);
     saveMoviesData(updatedMovies);
+    // On success
     // Re-rendering the movie list after removing the movie.
+    showMessage({message: `Successfully removed "${deletedMovie.title}" from the list.`, type: "INFO"});
     renderMoviesComponent();
     closeModal();
     window.scrollTo(0,0);

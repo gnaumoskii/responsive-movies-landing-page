@@ -8,6 +8,7 @@
     animation: show-message 0.35s ease-out, hide-message 0.35s 2.5s forwards;
     border-radius: 8px;
     font-weight: 500;
+    z-index: 2;
 }
 
 .message--SUCCESS {

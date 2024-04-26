@@ -2,6 +2,7 @@ import { closeModal, createModal } from "./utility/modal";
 import "../css/movies/movie-form.css";
 import { renderMoviesComponent, openMovieDetailsModal } from "./movies";
 import { movies, saveMoviesData } from "../data/data";
+import { showMessage } from "./utility/message";
 
 export const openAddMovieModal = () => {
     const addFormContainer = createFormElement();
@@ -263,6 +264,8 @@ const addFormSubmitHandler = (event) => {
     };
     movies.unshift(newMovie);
     saveMoviesData(movies);
+    // On success
+    showMessage({message: `Successfully added "${newMovie.title}" to the list!`, type: "SUCCESS"});
     closeModal();
     renderMoviesComponent();
 };
@@ -283,6 +286,8 @@ const editFormSubmitHandler = (event, movieId) => {
     movie.genre = genre;
     movie.poster = poster;
     saveMoviesData(movies);
+    //On success
+    showMessage({message: `Successfully edited "${movie.title}".`, type: "SUCCESS"});
     closeModal();
     openMovieDetailsModal(movie);
     renderMoviesComponent();
