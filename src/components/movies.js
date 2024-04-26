@@ -3,7 +3,7 @@ import "../css/movies/movies.css";
 import { openEditMovieModal, openAddMovieModal } from "./movie-form";
 import { closeModal, createModal } from "./utility/modal";
 import { movies, saveMoviesData } from "../data/data";
-
+import { showMessage } from "./utility/message";
 
 export const appliedFilters = {
     genres: [],

@@ -1,0 +1,57 @@
+.message {
+    background-color: rgb(255, 255, 255);
+    color: black; 
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    padding: 12px 24px;
+    animation: show-message 0.35s ease-out, hide-message 0.35s 2.5s forwards;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.message--SUCCESS {
+    background-color: var(--green-medium);
+    color: white;
+}
+
+.message--INFO {
+    background-color: var(--blue-medium);
+    color: white;
+}
+
+.message--WARNING {
+    background-color: var(--yellow-medium);
+    color: black;
+}
+
+.message--DANGER {
+    background-color: var(--red-medium);
+    color: white;
+}
+
+@keyframes show-message {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+}
+
+@keyframes hide-message {
+    0% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    
+    100%{
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+}
