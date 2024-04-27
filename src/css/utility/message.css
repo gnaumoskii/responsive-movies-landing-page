@@ -56,3 +56,13 @@
     }
 
 }
+
+@media (max-width: 576px) {
+    .message {
+        right: 0;
+        left: 0;
+        width: initial;
+        min-width: initial;
+        margin: 0 16px;
+    }
+}

@@ -53,6 +53,7 @@
 @media (max-width: 576px) {
     .custom-modal__content {
       height: 100vh;
+      width: 100%;
       max-height: 100%;
       border-radius: 0;
     }
